@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"> 
+<html> 
+  <head> 
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+    <title>G-Lab ToMaTo</title> 
+    <meta name="DESCRIPTION" content="ToMaTo Webpage" /> 
+    <link href="style/style.css" rel="stylesheet" type="text/css" /> 
+    <link rel="shortcut icon" type="image/x-icon" href="http://www.german-lab.de/favicon.ico" /> 
+  </head> 
+  <body> 
+    <div id="nonfooter"> 
+      <div id="border_top"></div> 
+      <div id="page"> 
+        
+        <div id="header"> 
+          <div id="minimenu_top" class="smallmenu"></div> 
+          <div id="logo"> 
+            <a href="http://www.german-lab.de"><img border="0" src="style/glablogo.jpg" alt="glablogo" /></a> 
+          </div> 
+          <div id="logo-text"> 
+            <h1>ToMaTo</h1> 
+            <br/> 
+            <h2>Topology management tool</h2> 
+          </div> 
+          <div id="menu_top"> 	
+            <ul>
+<!-- BEGIN OF TOP MENU -->
+#include <topmenu.html>
+<!-- END OF TOP MENU -->
+            </ul> 
+          </div> 
+        </div> 
+
+        <div id="left">
+<!-- BEGIN OF LEFT MENU -->
+#include <leftmenu.html>
+<!-- END OF LEFT MENU -->
+        </div> 
+ 
+        <div id="content">
+<!-- BEGIN OF CONTENT -->

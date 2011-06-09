@@ -1,0 +1,18 @@
+<div id="sidemenu"> 
+  <h2>Information</h2>
+  <ul> 
+    <li><a href="index.html">About</a></li> 
+    <li><a href="publications.html">Publications</a></li> 
+    <li><a href="obtain.html">Obtain</a></li> 
+    <li><a href="contribute.html">Contribute</a></li> 
+  </ul> 
+</div>
+
+<div id="sidemenu"> 
+  <h2>Github Project</h2>
+  <ul> 
+    <li><a href="http://www.github.com/dswd/ToMaTo">Project Page</a></li> 
+    <li><a href="http://www.github.com/dswd/ToMaTo/wiki">Project Wiki</a></li> 
+    <li><a href="http://www.github.com/dswd/ToMaTo/issues">Ticket System</a></li> 
+  </ul> 
+</div>

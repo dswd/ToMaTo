@@ -1,0 +1,38 @@
+#include <header.html>
+
+<h1>Development vs. Stable</h1>
+<p>
+There are several branches of ToMaTo: one stable branch and some development branches. While the stable branch is well tested and should not contain show-stopping bugs it also does not contain the latest features. The main development branch is called "master" and contains the latest development but also the latest bugs.
+<p>
+<p>
+If you want to actually use ToMaTo it is strongly recommended to use the stable branch. For development the master branch is the best because the code in the stable branch might be outdated.
+</p>
+
+<h1>Installation packages</h1>
+<p>
+The installation packages for tomato can be downloaded from <a href="packages">the packages folder</a>
+</p>
+
+<h1>Source tarballs</h1>
+<h2>Branches</h2>
+<ul>
+  <li><a href="http://github.com/dswd/ToMaTo/tarball/master">master</a></li>
+  <li><a href="http://github.com/dswd/ToMaTo/tarball/stable">stable</a></li>
+</ul>
+<h2>Versions</h2>
+<ul>
+  <li><a href="http://github.com/dswd/ToMaTo/tarball/1.4.1">1.4.1</a></li>
+</ul>
+
+
+<h1>Source checkout</h1>
+<p>
+You can clone the project with <a href="http://git-scm.com">Git</a> by running:
+<pre>$ git clone git://github.com/dswd/ToMaTo</pre>
+or <a href="http://github.com/dswd/ToMaTo">browse the source code on GitHub</a>.
+</p>
+
+<h2>License</h2>
+<p>GNU Affero GPL 3</p>
+
+#include <footer.html>

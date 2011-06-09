@@ -1,0 +1,8 @@
+#include <header.html>
+
+<h1>Contributions welcome</h1>
+<p>
+As ToMaTo is a community project all contributions are welcome. Please use Github to create a fork, create tickets, comment the code, etc.
+</p>
+
+#include <footer.html>
