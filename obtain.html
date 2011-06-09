@@ -59,25 +59,41 @@
         <div id="content">
 <!-- BEGIN OF CONTENT -->
 
-<h1>ToMaTo</h1>
+<h1>Development vs. Stable</h1>
 <p>
-The Topology Management Tool (ToMaTo) is a networking testbed, giving researchers the possibility to design and use virtual networking topologies consisting of devices and connectors. ToMaTo utilizes Proxmox virtualization technology (OpenVZ and KVM), Tinc VPN and Dummynet link emulation to organize virtual machines in virtual topologies.
+There are several branches of ToMaTo: one stable branch and some development branches. While the stable branch is well tested and should not contain show-stopping bugs it also does not contain the latest features. The main development branch is called "master" and contains the latest development but also the latest bugs.
+<p>
+<p>
+If you want to actually use ToMaTo it is strongly recommended to use the stable branch. For development the master branch is the best because the code in the stable branch might be outdated.
 </p>
 
-<h1>German-Lab</h1>
+<h1>Installation packages</h1>
 <p>
-ToMaTo has een developed as part of the G-Lab experimental facility. The <a href="http://www.german-lab.de">G-Lab project</a> consists of a Germany-wide research and experimental facility used to investigate the interplay between new technologies and the requirements of emerging applications. The BMBF funded project consists of  32 partners. The first phase started in October 2008 with six partners and runs for three years. The second phase started in September 2009 and consists of nine  additional research projects. The G-Lab testing facilities consist of wired and wireless hardware with over 170 nodes which are fully controllable by the G-Lab partners.
+The installation packages for tomato can be downloaded from <a href="packages">the packages folder</a>
 </p>
 
-<h2>German-Lab ToMaTo Installation</h2>
+<h1>Source tarballs</h1>
+<h2>Branches</h2>
+<ul>
+  <li><a href="http://github.com/dswd/ToMaTo/tarball/master">master</a></li>
+  <li><a href="http://github.com/dswd/ToMaTo/tarball/stable">stable</a></li>
+</ul>
+<h2>Versions</h2>
+<ul>
+  <li><a href="http://github.com/dswd/ToMaTo/tarball/1.4.1">1.4.1</a></li>
+</ul>
+
+
+<h1>Source checkout</h1>
 <p>
-The ToMaTo installation in the German-Lab experimental facility is located at <a href="http://tomato.german-lab.de">tomato.german-lab.de</a>. This installation is only accessible to the members of the German-Lab project and researchers of parner projects.
+You can clone the project with <a href="http://git-scm.com">Git</a> by running:
+<pre>$ git clone git://github.com/dswd/ToMaTo</pre>
+or <a href="http://github.com/dswd/ToMaTo">browse the source code on GitHub</a>.
 </p>
 
-<h1>Github Project</h1>
-<p>
-The <a href="http://www.github.com/dswd/ToMaTo">ToMaTo community project</a> is hosted at Github at and offers a wiki containing detailed documentation and a ticket tracking system for reporting bugs and requesting features. 
-</p>
+<h2>License</h2>
+<p>GNU Affero GPL 3</p>
+
 
 <!-- END OF CONTENT -->
         </div>
