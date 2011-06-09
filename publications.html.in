@@ -2,12 +2,19 @@
 
 <h1>Papers about ToMaTo</h1>
 <ul>
-<li>coming soon...</li>
+  <li>
+    <b>ToMaTo - a network experimentation tool</b><br/>
+    <i>Dennis Schwerdel, David Hock, Daniel Günther, Bernd Reuther, Paul Müller and Phuoc Tran-Gia</i><br/>
+    7th International ICST Conference on Testbeds and Research Infrastructures for the Development of Networks and Communities (TridentCom 2011), Shanghai, China, April 2011.
+  </li>
 </ul>
 
 <h1>Presentations about ToMaTo</h1>
 <ul>
-<li>coming soon...</li>
+  <li>
+    <b>ToMaTo - a network experimentation tool <a href="publications/ToMaTo_TridentCom2011.pdf">[pdf]</a></b><br/>
+    <i>Dennis Schwerdel</i>, TridentCom 2011, Shanghai, April 2011.
+  </li>
 </ul>
 
 #include <footer.html>
