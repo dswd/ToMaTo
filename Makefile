@@ -11,6 +11,8 @@ PAGES = index.html contribute.html obtain.html publications.html
 
 all: pages
 
+layout/header.html: layout/leftmenu.html layout/topmenu.html
+
 $(PAGES) : $(LAYOUT)
 
 pages: $(PAGES)
