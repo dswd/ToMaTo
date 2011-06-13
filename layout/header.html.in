@@ -6,6 +6,7 @@
     <meta name="DESCRIPTION" content="ToMaTo Webpage" /> 
     <link href="style/style.css" rel="stylesheet" type="text/css" /> 
     <link rel="shortcut icon" type="image/x-icon" href="http://www.german-lab.de/favicon.ico" /> 
+#include <analytics.html>
   </head> 
   <body> 
     <div id="nonfooter"> 

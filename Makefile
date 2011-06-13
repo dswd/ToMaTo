@@ -1,7 +1,7 @@
 CPP = cpp
 ARGS = -nostdinc -P -traditional-cpp -Ilayout
 
-LAYOUT = layout/leftmenu.html layout/topmenu.html layout/footer.html layout/header.html
+LAYOUT = layout/analytics.html layout/leftmenu.html layout/topmenu.html layout/footer.html layout/header.html
 PAGES = index.html contribute.html obtain.html publications.html
 
 %.html : %.html.in
@@ -11,7 +11,7 @@ PAGES = index.html contribute.html obtain.html publications.html
 
 all: pages
 
-layout/header.html: layout/leftmenu.html layout/topmenu.html
+layout/header.html: layout/analytics.html layout/leftmenu.html layout/topmenu.html
 
 $(PAGES) : $(LAYOUT)
 
