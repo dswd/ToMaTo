@@ -1,3 +1,4 @@
+#define TITLE G-Lab ToMaTo
 #include <header.html>
 
 <h1>ToMaTo</h1>
