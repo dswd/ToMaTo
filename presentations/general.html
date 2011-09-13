@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js ie6" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!-->  <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	
+	<title>Getting Started with deck.js</title>
+	
+	<meta name="description" content="A jQuery library for modern HTML presentations">
+	<meta name="author" content="Caleb Troughton">
+	<meta name="viewport" content="width=1024, user-scalable=no">
+	
+	<!-- Core and extension CSS files -->
+	<link rel="stylesheet" href="deckjs/css/deck.core.css">
+	<link rel="stylesheet" href="deckjs/css/deck.goto.css">
+	<link rel="stylesheet" href="deckjs/css/deck.menu.css">
+	<link rel="stylesheet" href="deckjs/css/deck.navigation.css">
+	<link rel="stylesheet" href="deckjs/css/deck.status.css">
+	<link rel="stylesheet" href="deckjs/css/deck.hash.css">
+	<link rel="stylesheet" href="deckjs/css/deck.scale.css">
+	
+	<!-- Theme CSS files (menu swaps these out) -->
+	<link rel="stylesheet" id="style-theme-link" href="deckjs/css/style/glab.css">
+	<link rel="stylesheet" id="transition-theme-link" href="deckjs/css/transition/fade.css">
+	
+	<script src="deckjs/js/modernizr.custom.js"></script>
+</head>
+
+<body class="deck-container">
+
+<div class="slide" id="title-slide">
+	<h1>ToMaTo - Topology Management Tool</h1>
+</div>
+
+<div class="slide" id="introduction">
+	<h2>ToMaTo</h2>
+	<div>
+		<h3>Origin</h3>
+		<ul>
+			<li>ToMaTo is being developed as part of the experimental facility of the <a href="http://www.german-lab.de">German-Lab project</a></li>
+			<li>OpenSource since version 2.0</li>
+		</ul>
+	</div>
+	<div class="slide">
+		<h3>What it is</h3>
+		<ul>
+			<li>A topology-oriented testbed software</li>
+			<li>An easy-to-use feature-rich tool for networking experiments</li>
+		</ul>
+	</div>
+	<div class="slide">
+		<h3>What it is NOT</h3>
+		<ul>
+			<li>A management tool for physical network topologies &mdash; Topologies are virtual</li>
+			<li>A tool to manage virtualized production networks &mdash; ToMaTo is still under development</li>
+			<li>A virtualization solution or virtualization frontend &mdash; ToMaTo is more</li>
+		</ul>
+	</div>
+</div>
+
+
+<div class="slide" id="topology-editor">
+	<h2>Topology editor</h2>
+	<img src="images/editor.png" class="span" style="position:absolute;"/>
+	<div class="slide" style="opacity: 1; background: #fff; margin-left: 3cm; margin-top: 2cm; padding: 10px; width:60%;">
+		<h3>Editor usage</h3>
+		<ul class="left">
+			<li style="margin-left:2em; margin-right:1em;">Elements can be added from the palette on the right using drag&amp;drop</li>
+			<li style="margin-left:2em; margin-right:1em;">Lots of attributes can be edited in the attribute panels</li>
+			<li style="margin-left:2em; margin-right:1em;">Topology settings can be changed using the topology icon</li>
+		</ul>
+	</div>
+	<div class="slide" style="opacity: 1; background: #fff; margin-left: 3cm; padding: 10px; width:60%;">
+		<h3>Editor features</h3>
+		<ul class="left">
+			<li style="margin-left:2em; margin-right:1em;">Interface auto-configuration</li>
+			<li style="margin-left:2em; margin-right:1em;">Automatic creator for huge topologies</li>
+			<li style="margin-left:2em; margin-right:1em;">Topology usage directly from editor</li>
+		</ul>
+	</div>
+</div>
+
+
+<div class="slide two-columns" id="topology-elements">
+	<h2>Topology elements</h2>
+	<img src="images/top.png" class="span"/>
+	<div class="slide column left">
+		<h3>Devices</h3>
+		<ul>
+			<li>produce and consume data</li>
+			<li>can run software</li>
+		</ul>
+	</div>
+	<div class="slide column right">
+		<h3>Connectors</h3>
+		<ul>
+			<li>forward and manipulate data</li>
+			<li>connect devices</li>
+		</ul>
+	</div>
+	<div class="slide column left">
+		<h3>Three kinds of devices</h3>
+		<ul>
+			<li>KVM devices</li>
+			<li>OpenVZ devices</li>
+			<li>Programmable devices</li>
+		</ul>
+	</div>
+	<div class="slide column right">
+		<h3>Two kinds of connectors</h3>
+		<ul>
+			<li>VPN networks</li>
+			<li>External networks</li>
+		</ul>
+	</div>
+</div>
+
+<div class="slide two-columns" id="kvm-devices">
+	<h2>KVM devices</h2>
+	<h3>Full virtualization (KVM)</h3>
+	<ul>
+		<li>Emulated hardware</li>
+		<li>Nearly all x86 operating systems supported</li>
+	</ul>
+	<div class="slide column left">
+		<h3>Pros</h3>
+		<ul>
+			<li>KVM devices can run any x86 operating system</li>
+			<ul>
+				<li>Windows</li>
+				<li>Linux</li>
+				<li>BSD</li>
+			</ul>
+			<li>Linux inside KVM can run custom kernels</li>
+		</ul>
+	</div>
+	<div class="slide column right">
+		<h3>Cons</h3>
+		<ul>
+			<li>KVM virtual machines use lots of resources</li>
+			<li>Access to the VM is complicated</li>
+			<ul>
+				<li>Login needed</li>
+				<li>VM is hard to control with scripts</li>
+			</ul>
+			<li>Interfaces cannot be configured by ToMaTo</li>
+		</ul>
+	</div>
+</div>
+
+<div class="slide two-columns" id="openvz-devices">
+	<h2>OpenVZ devices</h2>
+	<h3>Container virtualization (OpenVZ)</h3>
+	<ul>
+		<li>Guest operating systems share the Linux kernel of the host system</li>
+		<li>Only userspace (users, files, processes, etc.) is virtualized</li>
+		<li>Restricted access to kernel-space (hardware, filesystems, kernel modules, kernel variables, etc.)</li>
+		<li>Nearly all Linux distributions can be run</li>
+	</ul>
+	<div class="slide column left">
+		<h3>Pros</h3>
+		<ul>
+			<li>OpenVZ can run nearly any Linux operating system</li>
+			<li>Easy to access remotely</li>
+			<ul>
+				<li>Completely scriptable</li>
+			</ul>
+			<li>Efficient resource usage</li>
+			<li>Network interfaces fully configurable</li>
+			<ul>
+				<li>also using ToMaTo</li>
+			</ul>
+		</ul>
+	</div>
+	<div class="slide column right">
+		<h3>Cons</h3>
+		<ul>
+			<li>Only Linux systems</li>
+			<li>Limited kernel space access</li>
+			<ul>
+				<li>No kernel modules</li>
+				<li>Restricted access to some kernel calls</li>
+			</ul>
+		</ul>
+	</div>
+</div>
+
+<div class="slide two-columns" id="programable-devices">
+	<h2>Programmable devices</h2>
+	<h3>Sandboxed python scripts (Repy)</h3>
+	<ul>
+		<li>Raw network packets can be processed with python scripts</li>
+		<li>Sandboxing environment disallows some language elements (also most python libraries)</li>
+		<li>ToMaTo contains library of network protocols and server implementations</li>
+	</ul>
+	<div class="slide column left">
+		<h3>Pros</h3>
+		<ul>
+			<li>Very lightweight, uses nearly no resourcesy</li>
+			<li>Completely free to define packet processing</li>
+			<li>Extensive library ready to use</li>
+			<li>Parameters can be defined by ToMaTo</li>
+		</ul>
+	</div>
+	<div class="slide column right">
+		<h3>Cons</h3>
+		<ul>
+			<li>Cannot run any standard software</li>
+			<li>Most python libraries not available</li>
+		</ul>
+	</div>
+</div>
+
+<div class="slide" id="device-features">
+	<h2>Device features</h2>
+	<div class="slide">
+		<h3>Console access</h3>
+		<ul>
+			<li>Direct access to device console from webfrontend</li>
+			<li>Remote control of the device via mouse and keyboard (only OpenVZ and KVM)</li>
+			<li>Optional access via VNC (RFB protocol) using standard clients</li>
+		</ul>
+	</div>
+	<div class="slide">
+		<h3>Image upload/download</h3>
+		<ul>
+			<li>Download and upload the virtual harddisk of the device</li>
+			<li>Exchange the script of a programmable device</li>
+			<li>Can be used for backups or to clone an existing device</li>
+			<li>VMs can be imported into ToMaTo</li>
+		</ul>
+	</div>
+	<div class="slide">
+		<h3>Device templates</h3>
+		<ul>
+			<li>Pre-installed standard operating systems</li>
+			<ul>
+				<li>Various Linux distributions: Debian, Ubuntu, ...</li>
+				<li>Windows (only KVM, not public due to legal restrictions)</li>
+				<li>FreeBSD (only KVM)</li>
+			</ul>
+			<li>Lots of programmable device scripts: DNS server, DHCP server, Pingable node, ...</li>
+			<li>Templates can be managed by admins</li>
+		</ul>
+	</div>
+</div>
+
+<div class="slide" id="connectors">
+	<h2>Connectors</h2>
+	<p>Connectors forward and manipulate networking packets on their way between devices.</p>
+	<div class="slide">
+		<h3>VPN networks</h3>
+		<ul>
+			<li>Based on <a href="http://tinc-vpn.org">Tinc peer-to-peer VPN</a></li>
+			<li>Configurable semantics: Hub, Switch or Router (needs additional configuration)</li>
+			<li>Network is a virtual ethernet segment (not wit router semantics)</li>
+			<li>Network is completely contained, no packets enter, no packets escape</li>
+			<li>VPN can work between different sites</li>
+			<li>Users can enter the VPN using <a href="http://vtun.sourceforge.net/">VTun</a></li>
+		</ul>
+	</div>
+	<div class="slide">
+		<h3>External networks</h3>
+		<ul>
+			<li>Connect devices to an external network, accessible on the host system</li>
+			<li>Defined openings in the experiment topology</li>
+			<li>Mosty used for Internet connections</li>
+			<li>Experimental research networks can be accessed</li>
+			<li>Can be used to include other resources into the topology (like Planet-Lab slices)</li>
+		</ul>
+	</div>
+	<div class="slide">
+		<h3>Connecting with devices</h3>
+		<p>Devices can be used instead of connectors to provide special forwarding or manipulation schemes. Programmable devices offer an easy way to implement complex forwarding and packet manipulation algorithms.</p>
+	</div>
+</div>
+
+<div class="slide" id="vpn-features">
+	<h2>VPN connector extra features</h2>
+	<div class="slide">
+		<h3>Link emulation</h3>
+		<ul>
+			<li>Add delay to connections, configurable jitter, stochastic distributions</li>
+			<li>Add packet loss to connections, optionally correlated</li>
+			<li>Add packet dulpication and corruption, optionally correlated</li>
+			<li>Bandwidth limits down to a few kb/sec</li>
+			<li>All attributes can be configured on both directions individually</li>
+		</ul>
+	</div>
+	<div class="slide">
+		<h3>Packet capturing</h3>
+		<ul>
+			<li>Capture packets on connections with full tcpdump filter support</li>
+			<li>Captured packets can be downloaded in standard pcap format</li>
+			<ul>
+				<li>Can be opened in packet analysis tools like <a href="http://www.wireshark.org">Wireshark</a></li>
+				<li>Can be uploaded and analyzed in <a href="http://www.cloudshark.org">Cloudshark</a> (integrated in ToMaTo webfrontend)</li>
+			</ul>
+			<li>Live-capturing feature sends packets directly to a running Wireshark instance</li>
+		</ul>
+	</div>
+</div>
+
+<div class="slide" id="how-to-get">
+	<h2>Obtaining and contributing</h2>
+	<div class="slide">
+		<h3>How to get ToMaTo</h3>
+		<p>ToMaTo is Opensource! It can be simply downloaded from the <a href="http://github.com/dswd/ToMaTo">Github page</a>. There is also a <a href="http://github.com/dswd/ToMaTo/wiki/Tomatoinstallation">step-by-step tutorial</a> on how to setup ToMaTo in a testbed. ToMaTo includes some nice features that make it pretty easy to install it in an experimental facility:</p>
+		<ul>
+			<li>All components packaged for debian (updates come automatically)</li>
+			<li>Multiple authentication plugins: LDAP, htaccess, SQL-Database, Planet-Lab, ...</li>
+			<li>Automatic checks and problem reports for the ToMaTo hosts</li>
+		</ul>
+	</div>
+	<div class="slide">
+		<h3>How to contribute to ToMaTo</h3>
+		<p>As an Opensource project ToMaTo is open for hints and contributions.</p>
+		<ul>
+			<li>Github offers an easy way to fork the project and offer contributions as pull requests</li>
+			<li>The wiki is publically editable so everyone can help by adding to the documentation</li>
+			<li>The issue tracking system can be used for bug reports and feature requests</li>
+		</ul>
+	</div>
+</div>
+
+
+<!-- for navigation extension -->
+<a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
+<a href="#" class="deck-next-link" title="Next">&#8594;</a>
+
+<!-- for status extension -->
+<p class="deck-status">
+	<span class="deck-status-current"></span>
+	/
+	<span class="deck-status-total"></span>
+</p>
+
+<!-- for goto extension -->
+<form action="." method="get" class="goto-form">
+	<label for="goto-slide">Go to slide:</label>
+	<input type="number" name="slidenum" id="goto-slide">
+	<input type="submit" value="Go">
+</form>
+
+<!-- for hash extension -->
+<a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+
+<script src="deckjs/js/jquery-1.6.3.min.js"></script>
+
+<!-- Deck Core and extensions -->
+<script src="deckjs/js/deck.core.js"></script>
+<script src="deckjs/js/deck.menu.js"></script>
+<script src="deckjs/js/deck.goto.js"></script>
+<script src="deckjs/js/deck.status.js"></script>
+<script src="deckjs/js/deck.navigation.js"></script>
+<script src="deckjs/js/deck.hash.js"></script>
+<script src="deckjs/js/deck.scale.js"></script>
+
+<script><!-- 
+$(function() {$.deck('.slide');}); 
+//--></script>
+
+</body>
+</html>

@@ -3,7 +3,11 @@
   <head> 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
     <title>TITLE</title>
-    BASEPATH_TAG
+#define IFDEF #ifdef
+#define ENDIF #endif
+IFDEF BASEPATH_TAG
+     BASEPATH_TAG
+ENDIF
     <meta name="DESCRIPTION" content="ToMaTo Webpage" /> 
     <link href="style/style.css" rel="stylesheet" type="text/css" /> 
     <link rel="shortcut icon" type="image/x-icon" href="http://www.german-lab.de/favicon.ico" /> 
