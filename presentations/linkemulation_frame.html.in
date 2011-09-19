@@ -1,0 +1,14 @@
+#define TITLE G-Lab ToMaTo - Presentations
+#define BASEPATH_TAG <base href=".."/>
+#include <header.html>
+
+<h1>ToMaTo - Link Emulation</h1>
+<i>Dennis Schwerdel</i><br/>
+
+<br/>
+
+<a href="presentations/linkemulation.html">without frame</a><br/>
+
+<iframe width="800" height="600" frameborder="0" border="0" src="presentations/linkemulation.html"></iframe>
+
+#include <footer.html>
