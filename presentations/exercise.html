@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js ie6" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!-->  <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	
+	<title>ToMaTo - Exercise</title>
+	
+	<!--<meta name="viewport" content="width=1024, user-scalable=no">-->
+	
+	<!-- Core and extension CSS files -->
+	<link rel="stylesheet" href="../deckjs/css/deck.core.css">
+	<link rel="stylesheet" href="../deckjs/css/deck.goto.css">
+	<link rel="stylesheet" href="../deckjs/css/deck.menu.css">
+	<link rel="stylesheet" href="../deckjs/css/deck.navigation.css">
+	<link rel="stylesheet" href="../deckjs/css/deck.status.css">
+	<link rel="stylesheet" href="../deckjs/css/deck.hash.css">
+	<link rel="stylesheet" href="../deckjs/css/deck.scale.css">
+	
+	<!-- Theme CSS files (menu swaps these out) -->
+	<link rel="stylesheet" id="style-theme-link" href="../deckjs/css/style/glab.css">
+	<link rel="stylesheet" id="transition-theme-link" href="../deckjs/css/transition/fade.css" media="screen">
+
+	<!-- Codemirror -->
+	<link rel="stylesheet" href="../deckjs/codemirror/deck.codemirror.css">
+	<link rel="stylesheet" href="../deckjs/codemirror/codemirror.css">
+	<link rel="stylesheet" href="../deckjs/codemirror/themes/default.css">
+
+	<script src="../deckjs/js/modernizr.custom.js"></script>
+	
+	<style>
+	  .solutioncode {
+	    padding: 10px !important;
+	    border:3px #911A20 solid !important;
+	    background: #FDD !important;
+	    display: inline;
+	  }
+	  .solutioncode img {
+	    display: inline-block;
+	    margin: 0 5px 10px 0 !important;
+	    vertical-align: middle !important;
+	  }
+	</style>
+</head>
+
+<body class="deck-container">
+
+<div class="slide" id="title-slide">
+	<h1>ToMaTo - Exercise</h1>
+</div>
+
+<div class="slide two-columns" id="overview">
+	<h2>Overview</h2>
+	<p>In this exercise we will use ToMaTo to develop and extend a <strong>chat application</strong>.</p>
+	<div class="slide column left">
+		<h3>Exercise topics</h3>
+		<ul>
+			<li>Simple topology management</li>
+			<li class="slide">Link emulation</li>
+			<li class="slide">Packet capturing</li>
+			<li class="slide">External networks</li>
+			<li class="slide">Programmable devices</li>
+		</ul>
+	</div>
+	<div class="slide column right">
+		<h3>Task overview</h3>
+		<ol>
+			<li class="slide"><a href="#task1">Topology creation</a></li>
+			<li class="slide"><a href="#task2">First chat test</a></li>
+			<li class="slide"><a href="#task3">External networks</a></li>
+			<li class="slide"><a href="#task4">Packet analysis</a></li>
+			<li class="slide"><a href="#task5">Enhancing the chat client</a></li>
+			<li class="slide"><a href="#task6">Link emulation</a></li>
+			<li class="slide"><a href="#task7">Chat monitor</a></li>
+			<li class="slide"><a href="#task8">Chat forwarder</a></li>
+			<li class="slide"><a href="#task9">Chat filter</a></li>
+		</ol>
+	</div>
+	<div class="slide span">
+		<h3>Preparations</h3>
+		<ul>
+			<li class="slide">Working ToMaTo installation with an external network</li>
+			<li class="slide">Basic experience in networking, Linux and Python programming</li>
+			<li class="slide">A Linux computer with a browser with working java plugin</li>
+			<li class="slide">Experience with <a href="general.html">basic ToMaTo usage</a>, <a href="linkemulation.html">Link emulation with ToMaTo</a> and <a href="progdevice.html">Repy programmable devices</a></li>
+		</ul>
+	</div>
+</div>
+
+<div class="slide" id="task1">
+	<h2>Task 1: Topology creation</h2>
+	<h3>Details</h3>
+	<ol>
+		<li>Open the ToMaTo web frontend in your browser</li>
+		<li>Create a new topology with</li>
+		<ul>
+			<li>Three OpenVZ nodes as chat clients</li>
+			<li>A switch connector that connects all chat client nodes</li>
+			<li>An external network that is connected to all chat client nodes</li>
+		</ul>
+	</ol>
+	<div class="slide">
+		<h3>Hints</h3>
+		<img src="material/7rA/task1top.png" class="left"/>
+	</div>
+</div>
+
+<div class="slide" id="task1solution">
+	<h2>Solution of Task 1</h2>
+	<img src="material/7rA/task1top.png" class="left"/>
+	<h4 class="solutioncode slide"><img src="images/code.png" height="30pt"/>Code: <tt><a href="material/7rA">7rA</a></tt></h4>
+</div>
+
+<div class="slide" id="task2">
+	<h2>Task 2: First chat test</h2>
+	<h3>Details</h3>
+	<ol>
+		<li>Download the <a href="material/chat.py">simple chat client</a></li>
+		<li>Login to the nodes using the console and start the openssh daemon</li>
+		<li>Upload the chat client to all client nodes</li>
+		<li>Run the chat client on all nodes and test the connection</li>
+	</ol>
+	<div class="slide">
+		<h3>Hints</h3>
+		<ul>
+			<li>The IP addresses on the external network are assigned via DHCP, type <tt>ifconfig</tt> on the console of a node to find out its IP</li>
+			<li>The openssh daemon can be started with the command <tt>/etc/init.d/ssh start</tt> (fix key errors with <tt>dpkg-reconfigure openssh-server</tt>)</li>
+			<li>Create an ssh key-pair using <tt>ssh-keygen</tt> and upload it to the nodes using <tt>ssh-copy-id</tt> to enable passwordless login.</li>
+			<li>No python installed? Install it using <tt>sudo apt-get update</tt> and <tt>sudo apt-get install python</tt>.</li>
+			<li>The chat client expects the following parameters:</li>
+			<ol>
+				<li>The broadcast address: <tt>10.0.0.255</tt> in most cases</li>
+				<li>The port to use: <tt>5000</tt></li>
+				<li>A nickname of the node: Be creative!</li>
+			</ol>
+		</ul>
+	</div>
+</div>
+
+<div class="slide" id="task3">
+	<h2>Task 3: External networks</h2>
+	<h3>Details</h3>
+	<ol>
+		<li>Add another external network to your topology and connect one of your nodes to it</li>
+		<li>Configure the interface to use a fixed address in the range <tt>172.23.XX.YY/16</tt> with </li>
+        <ul>
+            <li>XX: user ID <strong>assigned to you</strong></li>
+            <li>YY: ID of single hosts</li>
+            <li>netmask: 255.255.0.0</li>
+        </ul>
+		<li>Start the chat client again with broadcast address <tt>172.23.255.255</tt></li>
+		<li>Can you chat with other people?</li>
+	</ol>
+	<div class="slide">
+		<h3>Hints</h3>
+		<ul>
+			<li>Cannot connect the external network to device? You need to stop the device, connect it and start it again (Remember to start openssh daemon again)</li>
+			<li>Use <tt>ifconfig</tt> to make sure your interface is configured correctly</li>
+		</ul>
+	</div>
+</div>
+
+<div class="slide" id="task3solution">
+	<h2>Solution of Task 3</h2>
+	<img src="material/Wm9/task3top.png" class="left"/>
+	<h4 class="solutioncode slide"><img src="images/code.png" height="30pt"/>Code: <tt><a href="material/Wm9">Wm9</a></tt></h4>
+</div>
+
+<div class="slide" id="task4">
+	<h2>Task 4: Packet analysis</h2>
+	<h3>Details</h3>
+	<ol>
+		<li>Activate packet capturing on one of the switch connections</li>
+		<li>Look at the chat messages using a packet analysis tool</li>
+		<li>How big is a simple <tt>Hello world</tt> message?</li>
+		<li>Which protocol headers are included in the message and how much overhead do they cause?</li>
+	</ol>
+	<div class="slide">
+		<h3>Hints</h3>
+		<ul>
+			<li>Edit the chat script to send a message periodically</li>
+			<li>Cannot see any chat packets? Are you still chatting over the external network?</li>
+			<li>If live capture does not work, use Cloudshark instead.</li>
+		</ul>
+	</div>
+</div>
+
+<div class="slide" id="task4solution">
+	<h2>Solution of Task 4</h2>
+	<h3>Example packet</h3>
+	<div class="slide"><textarea class="code">
+0000  ff ff ff ff ff ff 00 21  85 3c 4d 55 08 00 45 00   .......! .&lt;MU..E.
+0010  00 43 00 00 40 00 40 11  a2 73 83 f6 14 41 ff ff   .C..@.@. .s...A..
+0020  ff ff 13 88 13 88 00 2f  3d 05 6d 73 67 3d 27 48   ......./ =.msg='H
+0030  65 6c 6c 6f 20 77 6f 72  6c 64 27 3b 6e 69 63 6b   ello wor ld';nick
+0040  6e 61 6d 65 3d 27 63 68  61 74 63 6c 69 65 6e 74   name='ch atclient
+0050  27                                                 '     </textarea></div>
+	<br/>
+
+	<h3>How big is a "Hello world message?</h3>
+	<blockquote>
+		<p class="slide">71 bytes + length of nickname, example nickname was "chatclient" so 81 bytes</p>
+	</blockquote>
+
+	<h3>Which protocol headers are included in the message and how much overhead do they cause?</h3>
+	<blockquote><table class="slide">
+		<tr>
+			<th>Protocol&nbsp;</th>
+			<th>Overhead</th>
+		</tr>
+		<tr>
+			<td>Ethernet</td>
+			<td>14 Bytes</td>
+		</tr>
+		<tr>
+			<td>IPv4</td>
+			<td>20 Bytes</td>
+		</tr>
+		<tr>
+			<td>UDP</td>
+			<td>8 Bytes</td>
+		</tr>
+	</table></blockquote>
+</div>
+
+<div class="slide two-columns" id="task5">
+	<h2>Task 5: Enhancing the chat client</h2>
+	<h3>Details</h3>
+	<ul>
+		<li>Change the chat client to enable link emulation tests in task 6</li>
+		<li>Extend the chat client to include timestamp and increasing sequence number upon sending</li>
+		<li>Determine reordering and delay upon receiving</li>
+		<ul>
+			<li>Keep track of the next expected sequence number and report errors</li>
+			<li>Calculate delay as time difference</li>
+		</ul>
+		<li>Test your modifications in the topology</li>
+	</ul>
+	<div class="slide">
+		<div class="column left" style="width: 39%">
+		<h3>Hints</h3>
+<div><textarea class="code" mode="python">
+# Map operations
+map = {}
+map["Bob"] = 6
+map["Alice"] = 16
+if "Bob" in map:
+  print map["Bob"]
+default_value = 0
+print map.get("Charly", default_value)</textarea></div>
+		</div>
+		<div class="column right" style="width: 59%">
+<div><textarea class="code" mode="python">
+# Seconds since 1970-01-01, float value
+timestamp = time.time()
+
+# Float formatting
+print "%.2f" % ( 0.5234235 * 10 ) 
+
+# Assigning to global variables inside methods
+var = 2
+def method():
+  global var
+  var = 5</textarea></div>
+		</div>
+	</div>
+</div>
+
+<div class="slide" id="task5solution1">
+	<h2>Solution of Task 5 (1/2)</h2>
+	<h3>New global variables</h3>
+	<div class="slide"><textarea class="code" mode="python">
+seqNum = 0
+seqNums = {}</textarea></div>
+	<br/>
+	<h3>Changes to sending code</h3>
+	<div class="slide"><textarea class="code" mode="python">
+def send(msg): #Call this to send a message
+  data = {"msg": msg, "nickname": nickname}
+  data["time_sent"] = time.time()
+  global seqNum
+  seqNum += 1
+  data["seqnum"] = seqNum
+  sock.sendto(encode(data), address)</textarea></div>
+</div>
+
+<div class="slide" id="task5solution2">
+	<h2>Solution of Task 5 (2/2)</h2>
+	<h3>Changes to receiving code</h3>
+	<div class="slide"><textarea id="task5_2" class="code" mode="python">
+def onReceive(src, msg): #This is called when new messages are received
+  n = msg["nickname"]
+  if n == nickname: #ignore messages from us
+    return
+  time_received = time.time()
+  delay = time_received - msg["time_sent"]
+  expected_seqnum = seqNums.get(n, 0)+1
+  seqNums[n] = msg["seqnum"]
+  print "From %(nickname)s: %(msg)s" % msg
+  print "  Delay: %.2f ms" % ( delay * 1000.0 )
+  if msg["seqnum"] != expected_seqnum:
+    print "  Sequence number mismatch detected: seqnum=%d, expected=%d" % (msg["seqnum"], expected_seqnum)</textarea></div>
+	<br/>
+	<h4 class="solutioncode slide"><img src="images/code.png" height="30pt"/>Code: <tt><a href="material/b9A">b9A</a></tt></h4>
+</div>
+
+
+<div class="slide" id="task6">
+	<h2>Task 6: Link emulation</h2>
+	<h3>Details</h3>
+	<ol>
+		<li>Upload <a href="material/b9A/chat.py">the enhanced chat application from task 5</a> (Code: <tt>b9A</tt>) to the nodes</li>
+		<li>Change the link characteristics (e.g. delay, loss, duplication) of one connection and test the new features</li>
+		<li>Can you provoke packet reordering? (i.e. a new message is received after an older one)</li>
+	</ol>
+	<div class="slide">
+		<h3>Hints</h3>
+		<ul>
+			<li>Let one client send a message periodically or try to type really fast</li>
+			<li>Use big values for delay (up to several seconds) to see an effect</li>
+			<li>Seeing negative delays? The host clocks might be out of sync</li>
+		</ul>
+	</div>
+</div>
+
+<div class="slide" id="task6solution">
+	<h2>Solution of Task 6</h2>
+	<h3>Can you provoke packet reordering?</h3>
+	<blockquote>
+		<p class="slide">When the delay variance is high and the inter-packet time is small reordering can happen if the first message gets a high delay and the second message gets a low delay.</p>
+	</blockquote>
+</div>
+
+<div class="slide" id="task7">
+	<h2>Task 7: Chat monitor</h2>
+	<h3>Details</h3>
+	<ol>
+		<li>Download <a href="material/repylib.zip">the Repy library</a> and unpack it</li>
+		<li>Create a Repy script that displays all chat messages that it receives</li>
+		<li>Add a programmable device to the topology, connect it to the switch</li>
+		<li>Upload your script to the programmable device and test the monitor</li>
+	</ol>
+	<div class="slide">
+		<h3>Hints</h3>
+		<ul>
+			<li>Put your source file in <tt>src</tt>, call <tt>make</tt> and find your script in the <tt>build</tt> folder</li>
+			<li>Use c-style <tt>#include &lt;some/file&gt;</tt> commands to include files from the library</li>
+			<li>Have a look at <tt>ipmonitor.repy</tt></li>
+			<li>Make sure the headers exist before decoding them</li>
+			<li>Use <tt>echo()</tt> instead of <tt>print</tt></li>
+			<li>Upload your script to your Repy device as image when it is <strong>prepared</strong></li>
+		</ul>
+	</div>
+</div>
+
+<div class="slide" id="task7solution">
+	<h2>Solution of Task 7</h2>
+	<h3>Monitor code</h3>
+	<div class="slide"><textarea class="code" mode="python">
+#include &lt;util/run_forever.repy&gt;
+#include &lt;layer2/ethernet_proto.repy&gt;
+#include &lt;layer3/ip_proto.repy&gt;
+#include &lt;layer4/udp_proto.repy&gt;
+
+def monitor(src, pkt):
+  eth = ethernet_decode(pkt)
+  if eth.type != ETHERNET_TYPE_IP:
+    return
+  ip = ip_decode(eth.payload)
+  if ip.protocol != IP_PROTOCOL_UDP:
+    return
+  udp = udp_decode(ip.payload)
+  echo(udp.payload)
+
+if callfunc == 'initialize':
+    run_forever(monitor)</textarea></div>
+	<br/>
+	<h4 class="solutioncode slide"><img src="images/code.png" height="30pt"/>Code: <tt><a href="material/F4f">F4f</a></tt></h4>
+</div>
+
+<div class="slide" id="task8">
+	<h2>Task 8: Chat forwarder</h2>
+	<h3>Details</h3>
+	<ol>
+		<li>Write a Repy script that forwards chat messages to its interfaces</li>
+		<li>Adapt your topology so that you can test the forwarder</li>
+		<li>What happens if you connect two of these scripts to one switch?</li>
+	</ol>
+	<div class="slide">
+		<h3>Hints</h3>
+		<ul>
+			<li>Only forward chat message packets</li>
+			<li>Have a look at <tt>switch.repy</tt></li>
+			<li>The forwarder device needs two switches to forward</li>
+			<li>Reconnect one OpenVZ node, so you can reuse it</li>
+		</ul>
+	</div>
+</div>
+
+<div class="slide" id="task8solution1">
+	<h2>Solution of Task 8 (1/2)</h2>
+	<h3>Adapted topology</h3>
+	<img src="material/9fF/task8top.png" class="slide left"/>
+	<h3>What happens if you connect two of these scripts to one switch?</h3>
+	<blockquote class="slide">If the forwarder sends to the incoming interface, a <strong>forwarding loop</strong> is the consequence. More complex topologies can even multiply messages and bring down the network. This problem can be solved with the spanning tree protocol.</blockquote>
+</div>
+
+<div class="slide" id="task8solution2">
+	<h2>Solution of Task 8 (2/2)</h2>
+	<h3>Forwarder code</h3>
+	<div class="slide"><textarea class="code" mode="python">
+#include &lt;util/run_forever.repy&gt;
+#include &lt;layer2/ethernet_proto.repy&gt;
+#include &lt;layer3/ip_proto.repy&gt;
+#include &lt;layer4/udp_proto.repy&gt;
+
+def forward(src, pkt):
+  eth = ethernet_decode(pkt)
+  if eth.type != ETHERNET_TYPE_IP:
+    return
+  ip = ip_decode(eth.payload)
+  if ip.protocol != IP_PROTOCOL_UDP:
+    return
+  udp = udp_decode(ip.payload)
+  echo("Forwarding " + udp.payload)
+  for dev in tuntap_list():
+    if dev != src:
+      tuntap_send(dev, pkt)
+
+if callfunc == 'initialize':
+    run_forever(forward)</textarea></div>
+	<br/>
+	<h4 class="solutioncode slide"><img src="images/code.png" height="30pt"/>Code: <tt><a href="material/9fF">9fF</a></tt></h4>
+</div>
+
+<div class="slide" id="task9">
+	<h2>Task 9: Chat filter</h2>
+	<h3>Details</h3>
+	<ol>
+		<li>Extend <a href="material/9fF/forwarder.repy">the forwarder script</a> (Code: <tt>9fF</tt>) to filter out some <strong>bad words</strong></li>
+		<li>Read the list of bad words as parameters</li>
+	</ol>
+	<div class="slide">
+		<h3>Hints</h3>
+<div><textarea class="code" mode="python">
+# Extract arguments
+args = callargs[0].split(",")
+
+# Check substring
+needle = "and"
+haystring = "brand"
+if needle in haystack:
+  echo("found %s" % needle)</textarea></div>
+	</div>
+</div>
+
+<div class="slide" id="task9solution">
+	<h2>Solution of Task 9</h2>
+	<h3>Filtering forwarder code</h3>
+	<div><textarea class="code" mode="python">
+#include &lt;util/run_forever.repy&gt;
+#include &lt;layer2/ethernet_proto.repy&gt;
+#include &lt;layer3/ip_proto.repy&gt;
+#include &lt;layer4/udp_proto.repy&gt;
+
+def forward(src, pkt):
+  eth = ethernet_decode(pkt)
+  if eth.type != ETHERNET_TYPE_IP:
+    return
+  ip = ip_decode(eth.payload)
+  if ip.protocol != IP_PROTOCOL_UDP:
+    return
+  udp = udp_decode(ip.payload)
+  for word in badwords:
+    if word != "" and word in udp.payload:
+      echo("Message filtered because of bad word: " + word)
+      return
+  echo("Forwarding " + udp.payload)
+  for dev in tuntap_list():
+    if dev != src:
+      tuntap_send(dev, pkt)
+
+badwords = callargs[0].split(",")
+      
+if callfunc == 'initialize':
+    run_forever(forward)</textarea></div>
+	<br/>
+	<h4 class="solutioncode slide"><img src="images/code.png" height="30pt"/>Code: <tt><a href="material/gR7">gR7</a></tt></h4>
+</div>
+
+<div class="slide two-columns" id="summary">
+	<h2>Summary</h2>
+	<div class="slide column left">
+		<h3>What have we learned?</h3>
+		<ul>
+			<li class="slide">Basic ToMaTo usage</li>
+			<li class="slide">Link emulation</li>
+			<li class="slide">Packet capturing</li>
+			<li class="slide">Programmable devices</li>
+		</ul>
+	</div>
+	<div class="slide column right">
+		<h3>Topics not covered</h3>
+		<ul>
+			<li class="slide">Different operating systems using KVM</li>
+			<li class="slide">Device image upload/download</li>
+			<li class="slide">Device templates</li>
+			<li class="slide">ToMaTo administration</li>
+		</ul>
+	</div>
+	<div class="slide span">
+		<h3>Take-home tasks</h3>
+		<ul>
+			<li class="slide">Write a chat robot that answers simple questions</li>
+			<li class="slide">Change the chat client to allow unicast messages</li>
+			<li class="slide">Write a chat server that keeps a list of participants and manages chat rooms</li>
+			<li class="slide">Extend the chat client to forward messages to remote participants if needed</li>
+			<li class="slide">Add acknowledgements to chat messages and implement retransmission</li>
+		</ul>
+	</div>
+</div>
+
+
+<!-- for navigation extension -->
+<a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
+<a href="#" class="deck-next-link" title="Next">&#8594;</a>
+
+<!-- for status extension -->
+<p class="deck-status">
+	<span class="deck-status-current"></span>
+	/
+	<span class="deck-status-total"></span>
+</p>
+
+<!-- for goto extension -->
+<form action="." method="get" class="goto-form">
+	<label for="goto-slide">Go to slide:</label>
+	<input type="number" name="slidenum" id="goto-slide">
+	<input type="submit" value="Go">
+</form>
+
+<!-- for hash extension -->
+<a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+
+<script src="../deckjs/js/jquery-1.6.3.min.js"></script>
+
+<!-- Deck Core and extensions -->
+<script src="../deckjs/js/deck.core.js"></script>
+<script src="../deckjs/js/deck.menu.js"></script>
+<script src="../deckjs/js/deck.goto.js"></script>
+<script src="../deckjs/js/deck.status.js"></script>
+<script src="../deckjs/js/deck.navigation.js"></script>
+<script src="../deckjs/js/deck.hash.js"></script>
+<script src="../deckjs/js/deck.scale.js"></script>
+
+<!-- Codemirror -->
+<script src="../deckjs/codemirror/codemirror.js"></script>
+<script src="../deckjs/codemirror/mode/python/python.js"></script>
+<script src="../deckjs/codemirror/mode/clike/clike.js"></script>
+<script src="../deckjs/codemirror/deck.codemirror.js"></script>
+
+<script><!-- 
+$(function() {$.deck('.slide')});
+$.deck.defaults.codemirror.lineWrapping = true;
+//--></script>
+
+<script><!--
+$(function() {
+  window.setTimeout(function(){
+  var lines = $($("#task5solution1").find(".CodeMirror-lines")[1]).find("pre");
+  [1, 2, 7].forEach(function(i){
+    lines[i+1].style.cssText="background-color: #DDD";
+  });
+  var lines = $("#task5solution2").find(".CodeMirror-lines").find("pre");
+  [1, 2, 3, 4, 5, 10].forEach(function(i){
+    lines[i+1].style.cssText="background-color: #DDD";
+  });
+  var lines = $("#task7solution").find(".CodeMirror-lines").find("pre");
+  [1, 2, 3, 6, 7, 8, 9, 10, 16, 17].forEach(function(i){
+    lines[i+1].style.cssText="background-color: #DDD";
+  });
+  var lines = $("#task8solution2").find(".CodeMirror-lines").find("pre");
+  [1, 2, 3, 6, 7, 8, 9, 10, 16, 17].forEach(function(i){
+    lines[i+1].style.cssText="background-color: #DDD";
+  });
+  var lines = $("#task9solution").find(".CodeMirror-lines").find("pre");
+  [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 18, 19, 20, 21, 25, 26].forEach(function(i){
+    lines[i+1].style.cssText="background-color: #DDD";
+  });
+}, 100);});
+//--></script>
+
+</body>
+</html>

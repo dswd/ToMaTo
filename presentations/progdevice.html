@@ -22,7 +22,7 @@
 	
 	<!-- Theme CSS files (menu swaps these out) -->
 	<link rel="stylesheet" id="style-theme-link" href="deckjs/css/style/glab.css">
-	<link rel="stylesheet" id="transition-theme-link" href="deckjs/css/transition/fade.css">
+	<link rel="stylesheet" id="transition-theme-link" href="deckjs/css/transition/fade.css" media="screen">
 	
 	<!-- Codemirror -->
 	<link rel="stylesheet" href="deckjs/codemirror/deck.codemirror.css">
@@ -128,7 +128,7 @@ packet = tuntap_read("eth0", timeout=None)</textarea></div><p/>
 	<div class="slide">
 		<h3>Timeout values</h3>
 		<ul>
-			<li><tt>timeout=T</tt> waits at most for T seconds for a packet, otherwise returna None</li>
+			<li><tt>timeout=T</tt> waits at most for T seconds for a packet, otherwise returns None</li>
 			<li><tt>timeout=0.0</tt> returns packet (or None) immediately, no timeout</li>
 			<li><tt>timeout=None</tt> returns when a packet has been received, infinite timeout</li>
 		</ul>

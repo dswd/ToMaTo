@@ -1,0 +1,181 @@
+{
+  "connectors": {
+    "switch1": {
+      "connections": {
+        "openvz3.eth0": {
+          "interface": "openvz3.eth0", 
+          "attrs": {
+            "delay": 0.0, 
+            "lossratio": 0.0, 
+            "capture_to_file": false, 
+            "bandwidth": 10000.0, 
+            "gateway6": null, 
+            "gateway4": null, 
+            "capture_filter": "", 
+            "capture_via_net": false
+          }
+        }, 
+        "openvz1.eth0": {
+          "interface": "openvz1.eth0", 
+          "attrs": {
+            "delay": 0.0, 
+            "lossratio": 0.0, 
+            "capture_to_file": false, 
+            "bandwidth": 10000.0, 
+            "gateway6": null, 
+            "gateway4": null, 
+            "capture_filter": "", 
+            "capture_via_net": false
+          }
+        }, 
+        "openvz2.eth0": {
+          "interface": "openvz2.eth0", 
+          "attrs": {
+            "delay": 0.0, 
+            "lossratio": 0.0, 
+            "capture_to_file": false, 
+            "bandwidth": 10000.0, 
+            "gateway6": null, 
+            "gateway4": null, 
+            "capture_filter": "", 
+            "capture_via_net": false
+          }
+        }
+      }, 
+      "attrs": {
+        "external_access": false, 
+        "state": "created", 
+        "type": "switch", 
+        "name": "switch1", 
+        "_pos": "335.68022797261375,107.64037585770414"
+      }
+    }, 
+    "external1": {
+      "connections": {
+        "openvz3.eth1": {
+          "interface": "openvz3.eth1", 
+          "attrs": {}
+        }, 
+        "openvz2.eth1": {
+          "interface": "openvz2.eth1", 
+          "attrs": {}
+        }, 
+        "openvz1.eth1": {
+          "interface": "openvz1.eth1", 
+          "attrs": {}
+        }
+      }, 
+      "attrs": {
+        "name": "external1", 
+        "network_group": null, 
+        "_pos": "339.4433365835949,293.0770249572075", 
+        "state": "created", 
+        "type": "external", 
+        "network_type": "internet"
+      }
+    }
+  }, 
+  "attrs": {
+    "owner": "dennis.schwerdel@glab", 
+    "state": "created", 
+    "name": "ToMaTo_Exercise"
+  }, 
+  "devices": {
+    "openvz3": {
+      "interfaces": {
+        "eth1": {
+          "attrs": {
+            "use_dhcp": true, 
+            "ip6address": null, 
+            "name": "eth1", 
+            "ip4address": null
+          }
+        }, 
+        "eth0": {
+          "attrs": {
+            "use_dhcp": false, 
+            "ip6address": "fd01:ab1a:b1ab:0:3::1/64", 
+            "name": "eth0", 
+            "ip4address": "10.0.0.3/24"
+          }
+        }
+      }, 
+      "attrs": {
+        "name": "openvz3", 
+        "state": "created", 
+        "hostgroup": null, 
+        "_pos": "388.4661543813486,199.32497386734605", 
+        "gateway6": null, 
+        "gateway4": null, 
+        "root_password": "glabroot", 
+        "template": null, 
+        "type": "openvz"
+      }
+    }, 
+    "openvz2": {
+      "interfaces": {
+        "eth1": {
+          "attrs": {
+            "use_dhcp": true, 
+            "ip6address": null, 
+            "name": "eth1", 
+            "ip4address": null
+          }
+        }, 
+        "eth0": {
+          "attrs": {
+            "use_dhcp": false, 
+            "ip6address": "fd01:ab1a:b1ab:0:2::1/64", 
+            "name": "eth0", 
+            "ip4address": "10.0.0.2/24"
+          }
+        }
+      }, 
+      "attrs": {
+        "name": "openvz2", 
+        "state": "created", 
+        "hostgroup": null, 
+        "_pos": "336.85785355001394,200.37295065763243", 
+        "gateway6": null, 
+        "gateway4": null, 
+        "root_password": "glabroot", 
+        "template": null, 
+        "type": "openvz"
+      }
+    }, 
+    "openvz1": {
+      "interfaces": {
+        "eth1": {
+          "attrs": {
+            "use_dhcp": true, 
+            "ip6address": null, 
+            "name": "eth1", 
+            "ip4address": null
+          }
+        }, 
+        "eth0": {
+          "attrs": {
+            "use_dhcp": false, 
+            "ip6address": "fd01:ab1a:b1ab:0:1::1/64", 
+            "name": "eth0", 
+            "ip4address": "10.0.0.1/24"
+          }
+        }
+      }, 
+      "attrs": {
+        "name": "openvz1", 
+        "state": "created", 
+        "hostgroup": null, 
+        "_pos": "286.3654545352565,201.39826751735043", 
+        "gateway6": null, 
+        "gateway4": null, 
+        "root_password": "glabroot", 
+        "template": null, 
+        "type": "openvz"
+      }
+    }
+  }, 
+  "permissions": {
+    "dennis.schwerdel@glab": "owner"
+  }
+}

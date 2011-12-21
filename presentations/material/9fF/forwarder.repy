@@ -1,0 +1,20 @@
+#include <util/run_forever.repy>
+#include <layer2/ethernet_proto.repy>
+#include <layer3/ip_proto.repy>
+#include <layer4/udp_proto.repy>
+
+def forward(src, pkt):
+  eth = ethernet_decode(pkt)
+  if eth.type != ETHERNET_TYPE_IP:
+    return
+  ip = ip_decode(eth.payload)
+  if ip.protocol != IP_PROTOCOL_UDP:
+    return
+  udp = udp_decode(ip.payload)
+  echo("Forwarding " + udp.payload)
+  for dev in tuntap_list():
+    if dev != src:
+      tuntap_send(dev, pkt)
+
+if callfunc == 'initialize':
+    run_forever(forward)
