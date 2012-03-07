@@ -90,21 +90,30 @@
 	</div>
 </div>
 
-<div class="slide" id="task1">
+<div class="slide two-columns" id="task1">
 	<h2>Task 1: Topology creation</h2>
 	<h3>Details</h3>
 	<ol>
 		<li>Open the ToMaTo web frontend in your browser</li>
+		<li>Login to ToMaTo using your assignes credentials</li>
 		<li>Create a new topology with</li>
-		<ul>
-			<li>Three OpenVZ nodes as chat clients</li>
-			<li>A switch connector that connects all chat client nodes</li>
+		<ol>
+			<li>Three OpenVZ nodes as chat clients <strong>from the hostgroup <tt>ukl</tt></strong></li>
+			<li>A vpn connector that connects all chat client nodes</li>
 			<li>An external network that is connected to all chat client nodes</li>
-		</ul>
+		</ol>
 	</ol>
 	<div class="slide">
 		<h3>Hints</h3>
-		<img src="material/7rA/task1top.png" class="left"/>
+		<div class="column left" style="width:19%">
+			<img src="material/7rA/task1top.png" class="left"/>
+		</div>
+		<div class="column right" style="width:79%">
+			<ul>
+				<li>Connect the vpn first so that the devices will be enumerated correctly</li>
+				<li>Connect elements by selecting one element and clicking on another element holding the ctrl-key (Mac: alt-key)</li>
+			</ul>
+		</div>
 	</div>
 </div>
 
@@ -118,24 +127,26 @@
 	<h2>Task 2: First chat test</h2>
 	<h3>Details</h3>
 	<ol>
-		<li>Download the <a href="material/chat.py">simple chat client</a></li>
-		<li>Login to the nodes using the console and start the openssh daemon</li>
-		<li>Upload the chat client to all client nodes</li>
-		<li>Run the chat client on all nodes and test the connection</li>
+		<li>Download the <a href="material/chat.py">simple chat client</a> (link on overview page).</li>
+		<li>Start your topology by clicking on the play button in the topology control window.</li>
+		<li>Login to the nodes using the console and type <tt>/etc/init.d/ssh start</tt> to start the openssh daemon.</li>
+		<li>Use <tt>ifconfig</tt> to find out the IP-addresses that have been assigned via DHCP.</li>
+		<li>Upload the chat client script to all client nodes using <tt>scp</tt> or a tool like winscp.</li>
+		<ul>
+			<li>Username = <tt>root</tt>, Password = <tt>glabroot</tt> (configured in the device attribute window)</li>
+		</ul>
+		<li>Run the chat client on all nodes using the command <tt>python chat.py BROADCAST PORT NAME</tt>.</li>
+		<ul>
+			<li>BROADCAST = <tt>10.0.0.255</tt>, PORT = <tt>5000</tt>, NAME: Be creative!</li>
+		</ul>
 	</ol>
 	<div class="slide">
 		<h3>Hints</h3>
 		<ul>
-			<li>The IP addresses on the external network are assigned via DHCP, type <tt>ifconfig</tt> on the console of a node to find out its IP</li>
-			<li>The openssh daemon can be started with the command <tt>/etc/init.d/ssh start</tt> (fix key errors with <tt>dpkg-reconfigure openssh-server</tt>)</li>
-			<li>Create an ssh key-pair using <tt>ssh-keygen</tt> and upload it to the nodes using <tt>ssh-copy-id</tt> to enable passwordless login.</li>
+			<li>Optional: Create an ssh key-pair using <tt>ssh-keygen</tt> on your computer and upload it to the nodes using <tt>ssh-copy-id</tt> to enable passwordless login.</li>
+			<li>Errors about missing files on openssh startup can be fixex with <tt>dpkg-reconfigure openssh-server</tt>.</li>
 			<li>No python installed? Install it using <tt>sudo apt-get update</tt> and <tt>sudo apt-get install python</tt>.</li>
-			<li>The chat client expects the following parameters:</li>
-			<ol>
-				<li>The broadcast address: <tt>10.0.0.255</tt> in most cases</li>
-				<li>The port to use: <tt>5000</tt></li>
-				<li>A nickname of the node: Be creative!</li>
-			</ol>
+			<li>If you got a binding error when calling the chat client, your networking interface is misconfigured.</li>
 		</ul>
 	</div>
 </div>
@@ -144,20 +155,26 @@
 	<h2>Task 3: External networks</h2>
 	<h3>Details</h3>
 	<ol>
-		<li>Add another external network to your topology and connect one of your nodes to it</li>
-		<li>Configure the interface to use a fixed address in the range <tt>172.23.XX.YY/16</tt> with </li>
-        <ul>
-            <li>XX: user ID <strong>assigned to you</strong></li>
-            <li>YY: ID of single hosts</li>
-            <li>netmask: 255.255.0.0</li>
-        </ul>
+		<li>Add another external network to your topology and connect one of your nodes to it.</li>
+		<ul>
+			<li>Stop the device first so you change its connections.</li>
+		</ul>
+		<li>Configure the interface to use a fixed address in the range <tt>172.23.XX.1/16</tt> with </li>
+		<ul>
+			<li>XX: user ID <strong>assigned to you</strong>, netmask: <tt>255.255.0.0</tt></li>
+			<li>Command: <tt>ifconfig eth2 172.23.XX.1 netmask 255.255.0.0 up</tt></li>
+		</ul>
 		<li>Start the chat client again with broadcast address <tt>172.23.255.255</tt></li>
+		<ul>
+			<li>Command: <tt>python chat.py BROADCAST PORT NAME</tt></li>
+			<li>BROADCAST = <tt>172.23.255.255</tt>, PORT = <tt>5000</tt>, NAME: Be creative!</li>
+		</ul>
 		<li>Can you chat with other people?</li>
 	</ol>
 	<div class="slide">
 		<h3>Hints</h3>
 		<ul>
-			<li>Cannot connect the external network to device? You need to stop the device, connect it and start it again (Remember to start openssh daemon again)</li>
+			<li>If you restart your device the openssh deamon will not be restarted.</li>
 			<li>Use <tt>ifconfig</tt> to make sure your interface is configured correctly</li>
 		</ul>
 	</div>
@@ -173,18 +190,20 @@
 	<h2>Task 4: Packet analysis</h2>
 	<h3>Details</h3>
 	<ol>
-		<li>Activate packet capturing on one of the switch connections</li>
-		<li>Look at the chat messages using a packet analysis tool</li>
+		<li>Activate packet capturing <strong>to file</strong> on one of the vpn connections</li>
+		<li>Make sure to send some chat messages to be captured</li>
+		<li>Look at the chat messages using the <strong>cloadshark</strong>packet analysis tool</li>
 		<li>How big is a simple <tt>Hello world</tt> message?</li>
 		<li>Which protocol headers are included in the message and how much overhead do they cause?</li>
 	</ol>
 	<div class="slide">
 		<h3>Hints</h3>
 		<ul>
-			<li>Edit the chat script to send a message periodically</li>
-			<li>Cannot see any chat packets? Are you still chatting over the external network?</li>
-			<li>If live capture does not work, use Cloudshark instead.</li>
-		</ul>
+			<li>Optional: Edit the chat script to send a message periodically</li>
+			<li>Make sure you are chatting via the vpn using <tt>python chat.py BROADCAST PORT NAME</tt>.</li>
+			<ul>
+				<li>BROADCAST = <tt>10.0.0.255</tt>, PORT = <tt>5000</tt>, NAME: Be creative!</li>
+			</ul>
 	</div>
 </div>
 

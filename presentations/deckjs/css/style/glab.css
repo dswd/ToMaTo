@@ -18,6 +18,10 @@
   color: #888;
   margin-bottom: 0;
 }
+.deck-container tt {
+  font-weight: bold;
+  font-size: 1.5em;
+}
 .deck-container pre {
   border-color: #ccc;
 }
@@ -69,7 +73,7 @@
 .deck-container li {
   padding: 0.1em 0;
 }
-.deck-container ul ul {
+.deck-container ul ul, .deck-container ul ol, .deck-container ol ul, .deck-container ol ol {
   margin-bottom: 0;
 }
 
