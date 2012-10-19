@@ -1,6 +1,6 @@
 {
   "connectors": {
-    "switch1": {
+    "vpn1": {
       "connections": {
         "openvz3.eth0": {
           "interface": "openvz3.eth0", 
@@ -45,8 +45,9 @@
       "attrs": {
         "external_access": false, 
         "state": "created", 
-        "type": "switch", 
-        "name": "switch1", 
+        "type": "vpn", 
+        "name": "vpn1",
+        "mode": "switch",
         "_pos": "335.68022797261375,107.64037585770414"
       }
     }, 

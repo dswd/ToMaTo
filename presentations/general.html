@@ -175,7 +175,7 @@
 	<div class="slide column left">
 		<h3>Pros</h3>
 		<ul>
-			<li>Very lightweight, uses nearly no resourcesy</li>
+			<li>Very lightweight, uses nearly no resources</li>
 			<li>Completely free to define packet processing</li>
 			<li>Extensive library ready to use</li>
 			<li>Parameters can be defined by ToMaTo</li>
@@ -232,7 +232,7 @@
 		<ul>
 			<li>Based on <a href="http://tinc-vpn.org">Tinc peer-to-peer VPN</a></li>
 			<li>Configurable semantics: Hub, Switch or Router (needs additional configuration)</li>
-			<li>Network is a virtual ethernet segment (not wit router semantics)</li>
+			<li>Network is a virtual ethernet segment (not with router semantics)</li>
 			<li>Network is completely contained, no packets enter, no packets escape</li>
 			<li>VPN can work between different sites</li>
 			<li>Users can enter the VPN using <a href="http://vtun.sourceforge.net/">VTun</a></li>
@@ -297,6 +297,39 @@
 			<li style="margin-left:2em; margin-right:1em;">Interface auto-configuration</li>
 			<li style="margin-left:2em; margin-right:1em;">Automatic creation of huge topologies</li>
 			<li style="margin-left:2em; margin-right:1em;">Topology usage directly from editor</li>
+		</ul>
+	</div>
+</div>
+
+<div class="slide two-columns" id="structure">
+	<h2>ToMaTo structure</h2>
+	<div class="column left">
+		<img src="images/structure.png"/>
+	</div>
+	<div class="slide column right">
+		<h3>Facility hosts</h3>
+		<ul>
+			<li>Running Proxmox VE + additional software</li>
+			<li>No need for layer 2 connectivity</li>
+			<li>Organized in sites</li>
+		</ul>
+	</div>
+	<div class="span"></div>
+	<div class="slide column left">
+		<h3>Backend component</h3>
+		<ul>
+			<li>Central component for orchestration</li>
+			<li>Controls hosts via SSH</li>
+			<li>User management via authentication plugins</li>
+			<li>Provides XML-RPC interface</li>
+		</ul>
+	</div>
+	<div class="slide column right">
+		<h3>Multiple frontends</h3>
+		<ul>
+			<li>Web-based, Command-line, Automated scripts, ...</li>
+			<li>Use common XML-RPC interface</li>
+			<li>More frontends possible</li>
 		</ul>
 	</div>
 </div>
