@@ -1,0 +1,10 @@
+Origin: tomato
+Label: stable 
+Codename: stable
+Version: 6.0
+Suite: stable
+Description: ToMaTo repository
+Architectures: i386 amd64 source
+Components: main contrib non-free
+UDebComponents: main
+SignWith: 6E70F9D8

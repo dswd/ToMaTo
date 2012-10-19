@@ -1,0 +1,7 @@
+Archive: stable
+Version: 6.0
+Component: contrib
+Origin: tomato
+Label: stable
+Architecture: source
+Description: ToMaTo repository

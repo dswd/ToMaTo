@@ -1,0 +1,7 @@
+Archive: stable
+Version: 6.0
+Component: main
+Origin: tomato
+Label: stable
+Architecture: i386
+Description: ToMaTo repository

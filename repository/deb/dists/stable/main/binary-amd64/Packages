@@ -1,0 +1,36 @@
+Package: tomato-hostmanager
+Version: 0.0.1
+Architecture: all
+Maintainer: Dennis Schwerdel <schwerdel@informatik.uni-kl.de>
+Installed-Size: 392
+Depends: debconf (>= 0.5) | debconf-2.0, python, python-support (>= 0.90.0), python-django (>= 1.2), python-django-south (>= 0.7), python-psycopg2, postgresql, dbconfig-common, daemon, bittorrent, openssl, ssl-cert
+Recommends: pve-qemu-kvm, vzctl, vzdump, bridge-utils, iproute, tinc, ucspi-tcp, rdiff, socat, tcpdump, vncterm, tcpslice, tomato-repy (>= 0.5), vtun
+Priority: extra
+Section: misc
+Filename: pool/main/t/tomato-hostmanager/tomato-hostmanager_0.0.1_all.deb
+Size: 67768
+SHA256: 8fd3c1d830801cf21669fe7a239ee27a616685b1a5eddaeda1574ee0e0beb59e
+SHA1: 75386bfe4067ddab88d1d3feaea99027ee65a676
+MD5sum: 890eaea5e79baaaf4ebbf669d9f0cbab
+Description: ToMaTo hostmanager
+ ToMaTo hostmanager
+
+Package: tomato-repy
+Version: 0.5
+Architecture: all
+Maintainer: Dennis Schwerdel <schwerdel@informatik.uni-kl.de>
+Installed-Size: 858
+Depends: python
+Homepage: http://dswd.github.com/ToMaTo
+Priority: extra
+Section: libs
+Filename: pool/main/t/tomato-repy/tomato-repy_0.5_all.deb
+Size: 215586
+SHA256: 047a012736b5d36530a91262a86e05f19e01c87dd542d15f5c1b36bcaa607438
+SHA1: b0981fe13fb12f682843b772fcecae9ef5d4d98b
+MD5sum: 167eadb1e1bb3dd5958216814a576f0c
+Description: Python-based virtual machine for networking devices
+ Repy allows execution of modified python code in a sandbox.
+ ToMaTo-Repy is a modified version of Repy that allows this code
+ to access prepared tun/tap devices.
+
