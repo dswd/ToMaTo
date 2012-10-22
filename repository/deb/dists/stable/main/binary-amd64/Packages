@@ -1,16 +1,16 @@
 Package: tomato-host-proxmox
-Version: 0.1.2
+Version: 0.1.2-1
 Architecture: all
 Maintainer: Dennis Schwerdel <schwerdel@informatik.uni-kl.de>
-Installed-Size: 72
+Installed-Size: 64
 Depends: tomato-hostmanager, pve-qemu-kvm, vzctl, vzdump, bridge-utils, iproute, tinc, ucspi-tcp, rdiff, socat, tcpdump, vncterm, tcpslice, tomato-repy (>= 0.5), vtun
 Priority: extra
 Section: misc
-Filename: pool/main/t/tomato-host-proxmox/tomato-host-proxmox_0.1.2_all.deb
-Size: 13958
-SHA256: 7a1b9ea458ae17a209fdf163218d85c8399eea7ccc5a8dc714655a79279f9da0
-SHA1: 0f2e8beff3720b9417fada28b2c611f9f237df37
-MD5sum: 66acb3d53cd56a603b8940d19adbefd2
+Filename: pool/main/t/tomato-host-proxmox/tomato-host-proxmox_0.1.2-1_all.deb
+Size: 14190
+SHA256: 30565e1df0fe67cf6786c44d82b8a13c89af6755c96efe7ca7c980efc3487c5c
+SHA1: 28edcb9aa1923dee135d0b6b116140ef3733097e
+MD5sum: a3196d371dcbe91e3e757fa9fe945b48
 Description: Meta package to install tomato on proxmox hosts
  Meta package to install tomato on proxmox hosts
 
