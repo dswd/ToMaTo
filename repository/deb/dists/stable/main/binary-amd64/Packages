@@ -50,3 +50,19 @@ Description: Python-based virtual machine for networking devices
  ToMaTo-Repy is a modified version of Repy that allows this code
  to access prepared tun/tap devices.
 
+Package: websockify
+Version: 0.2
+Architecture: amd64
+Maintainer: Dennis Schwerdel <schwerdel@informatik.uni-kl.de>
+Installed-Size: 127
+Depends: debconf (>= 0.5) | debconf-2.0, python
+Priority: extra
+Section: misc
+Filename: pool/main/w/websockify/websockify_0.2_amd64.deb
+Size: 28634
+SHA256: 40ae0316026ea7644f63f8c87484888c8bd2c114ac29066c728424cef5ad8f27
+SHA1: bb2e688bee036e31671e4a0d871f557ae96e7635
+MD5sum: 52bd134ee9666d68ef8ee8eb31d8d32f
+Description: Websockify
+ Websockify
+
