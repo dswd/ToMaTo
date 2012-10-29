@@ -1,33 +1,33 @@
 Package: tomato-host-proxmox
-Version: 0.1.2-1
+Version: 0.1.3
 Architecture: all
 Maintainer: Dennis Schwerdel <schwerdel@informatik.uni-kl.de>
 Installed-Size: 64
-Depends: tomato-hostmanager, pve-qemu-kvm, vzctl, vzdump, bridge-utils, iproute, tinc, ucspi-tcp, rdiff, socat, tcpdump, vncterm, tcpslice, tomato-repy (>= 0.5), vtun
+Depends: tomato-hostmanager, pve-qemu-kvm, vzctl, vzdump, bridge-utils, iproute, tinc, ucspi-tcp, rdiff, socat, tcpdump, vncterm, tcpslice, tomato-repy (>= 0.5), vtun, websockify
 Priority: extra
 Section: misc
-Filename: pool/main/t/tomato-host-proxmox/tomato-host-proxmox_0.1.2-1_all.deb
-Size: 14190
-SHA256: 30565e1df0fe67cf6786c44d82b8a13c89af6755c96efe7ca7c980efc3487c5c
-SHA1: 28edcb9aa1923dee135d0b6b116140ef3733097e
-MD5sum: a3196d371dcbe91e3e757fa9fe945b48
+Filename: pool/main/t/tomato-host-proxmox/tomato-host-proxmox_0.1.3_all.deb
+Size: 14240
+SHA256: 0d6fb6fd3e5d27da4187ba7a1821f7a502aadbb634d336811bb5fad031e9e0f2
+SHA1: ae69a37b4e57716d7b0992f645dbc076c106eadf
+MD5sum: 006daba07ca83ca0c8f1b67862ad308b
 Description: Meta package to install tomato on proxmox hosts
  Meta package to install tomato on proxmox hosts
 
 Package: tomato-hostmanager
-Version: 0.0.9
+Version: 0.0.10
 Architecture: all
 Maintainer: Dennis Schwerdel <schwerdel@informatik.uni-kl.de>
-Installed-Size: 429
+Installed-Size: 435
 Depends: debconf (>= 0.5) | debconf-2.0, python, python-support (>= 0.90.0), python-django (>= 1.2), python-django-south (>= 0.7), python-psycopg2, postgresql, dbconfig-common, daemon, bittorrent, openssl, ssl-cert
 Recommends: pve-qemu-kvm, vzctl, vzdump, bridge-utils, iproute, tinc, ucspi-tcp, rdiff, socat, tcpdump, vncterm, tcpslice, tomato-repy (>= 0.5), vtun, logrotate
 Priority: extra
 Section: misc
-Filename: pool/main/t/tomato-hostmanager/tomato-hostmanager_0.0.9_all.deb
-Size: 74926
-SHA256: 261fa3faeb210cd520e4d5a854e82e346472ba4d7c16f76a24bd9c7acd1247cb
-SHA1: 297876601ae833c4c171ae77fdcee930cc3e84b7
-MD5sum: d0bcf1a807956cb5606386d23aaa5ae6
+Filename: pool/main/t/tomato-hostmanager/tomato-hostmanager_0.0.10_all.deb
+Size: 76254
+SHA256: 6b56dd8c5143d1b97c404ded4d29d19b90a5f3a6e5d139b7086d047f948d644c
+SHA1: cd57542de88ac6de3bb307372a88f81279ab7024
+MD5sum: c600111192ec373eb32e5b5d939bcfee
 Description: ToMaTo hostmanager
  ToMaTo hostmanager
 
