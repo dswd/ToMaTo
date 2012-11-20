@@ -15,19 +15,19 @@ Description: Meta package to install tomato on proxmox hosts
  Meta package to install tomato on proxmox hosts
 
 Package: tomato-hostmanager
-Version: 0.0.15
+Version: 0.0.16
 Architecture: all
 Maintainer: Dennis Schwerdel <schwerdel@informatik.uni-kl.de>
-Installed-Size: 432
+Installed-Size: 428
 Depends: debconf (>= 0.5) | debconf-2.0, python, python-support (>= 0.90.0), python-django (>= 1.2), python-django-south (>= 0.7), python-psycopg2, postgresql, dbconfig-common, daemon, bittorrent, openssl, ssl-cert
 Recommends: pve-qemu-kvm, vzctl, vzdump, bridge-utils, iproute, tinc, ucspi-tcp, rdiff, socat, tcpdump, vncterm, tcpslice, tomato-repy (>= 0.5), vtun, logrotate
 Priority: extra
 Section: misc
-Filename: pool/main/t/tomato-hostmanager/tomato-hostmanager_0.0.15_all.deb
-Size: 76792
-SHA256: aff281d32668f55648b5c99e3dfd5950c8a255a11534b50e8f844ec0e6b28ca3
-SHA1: a1718499c2fda0a36d39a6817f05116087dc2242
-MD5sum: 453feca89ecc0d00c4ce8b92b8b50b04
+Filename: pool/main/t/tomato-hostmanager/tomato-hostmanager_0.0.16_all.deb
+Size: 76096
+SHA256: 4b03dc59d30382d03689a1e256de55d6e09c34bbd4d48491e340b22675d7f7d2
+SHA1: 8f9196eea0665558912a7e01f708aa81379db4bb
+MD5sum: f9a805880e907df008dac2c74ae54f88
 Description: ToMaTo hostmanager
  ToMaTo hostmanager
 
