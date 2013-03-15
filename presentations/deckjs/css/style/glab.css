@@ -89,11 +89,27 @@
 }
 .deck-container .two-columns .left {
   float: left;
+  clear: left;
 }
 .deck-container .two-columns .right {
   float: right;
+  clear: right;
 }
 .deck-container .two-columns .span {
   float: none;
   clear: both;
+}
+
+.deck-container table td, .deck-container table th {
+  padding: 2mm;
+  text-align: left;
+  border: 1px solid #ccc;
+}
+
+.deck-container table img {
+  margin-bottom: 0px;
+}
+
+.deck-container .two-columns .column img {
+  margin: 0px;
 }
