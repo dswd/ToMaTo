@@ -2,20 +2,44 @@ body {
   font-family: "Helvetica Neue", sans-serif;
   font-size: 1.25em;
   background: #fff;
+  border-left: 8mm solid #2475B2;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
 }
 .deck-container .slide {
   background: #fff;
 }
 .deck-container h1 {
   color: #000;
+  position: relative !important;
+  clear: both;
+  -webkit-transform: none !important;
+  padding: 2cm 0 !important;
 }
 .deck-container h2 {
-  color: #911A20;
-  border-bottom-color: #ccc;
+  background-color: #CCE6FF;
+  background-image: url('icsy_top.png');
+  background-repeat: no-repeat;
+  background-position: left center;
+  color: #000;
+  border-bottom: 0px;
   margin-bottom: 0.5em;
+  width: 100%;
+  padding: 3mm;
+  padding-left: 169px;
+  position: relative;
+  left: -48px;
+}
+.deck-container.deck-menu h2 {
+  background-image: none;
+  padding: 1mm;
+  padding-left: 48px;
+  font-size: 3em;
 }
 .deck-container h3 {
-  color: #888;
+  color: #000;
   margin-bottom: 0;
 }
 .deck-container tt {
@@ -44,11 +68,17 @@ body {
   color: #888;
 }
 .deck-container a, .deck-container a:hover, .deck-container a:focus, .deck-container a:active, .deck-container a:visited {
-  color: #911A20;
+  color: #2475B2;
   text-decoration: none;
 }
 .deck-container a:hover, .deck-container a:focus {
   text-decoration: underline;
+}
+.deck-container.deck-menu {
+  overflow: auto;
+}
+.deck-container.deck-menu .deck-prev-link, .deck-container.deck-menu .deck-next-link {
+  display: none;
 }
 .deck-container .deck-prev-link, .deck-container .deck-next-link {
   background: #ccc;
@@ -58,7 +88,7 @@ body {
   color: #fff;
 }
 .deck-container .deck-prev-link:hover, .deck-container .deck-prev-link:focus, .deck-container .deck-next-link:hover, .deck-container .deck-next-link:focus {
-  background: #911A20;
+  background: #2475B2;
   text-decoration: none;
 }
 .deck-container .deck-status {
@@ -113,4 +143,12 @@ body {
 
 .deck-container .two-columns .column img {
   margin: 0px;
+}
+
+.csstransforms .deck-container.deck-scale.deck-menu {
+  width: auto !important;
+}
+
+.deck-container {
+  width: auto;
 }
