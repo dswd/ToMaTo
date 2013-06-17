@@ -50,7 +50,7 @@ body {
   border-color: #ccc;
 }
 .deck-container code {
-  color: #888;
+  color: #000;
 }
 .deck-container blockquote {
   font-size: 1em;
@@ -65,7 +65,7 @@ body {
   font-size: .5em;
   font-style: normal;
   font-weight: bold;
-  color: #888;
+  color: #000;
 }
 .deck-container a, .deck-container a:hover, .deck-container a:focus, .deck-container a:active, .deck-container a:visited {
   color: #2475B2;
@@ -100,8 +100,24 @@ body {
 .deck-container.deck-menu .deck-current, .no-touch .deck-container.deck-menu .slide:hover {
   background: #ddf;
 }
+.deck-container li:before {
+  content: '\0025B6'; /* BLACK RIGHT-POINTING TRIANGLE */
+  color: #2475B2;
+  position: relative;
+  left: -0.5em;
+}
+.deck-container li li:before {
+  content: '\0025A0'; /* BLACK SQUARE */
+}
+.deck-container li li li:before {
+  content: '\0025CF'; /* BLACK CIRCLE */
+}
+.deck-container li li li li:before {
+  content: '-';
+}
 .deck-container li {
   padding: 0.1em 0;
+  list-style: none;
 }
 .deck-container ul ul, .deck-container ul ol, .deck-container ol ul, .deck-container ol ol {
   margin-bottom: 0;
