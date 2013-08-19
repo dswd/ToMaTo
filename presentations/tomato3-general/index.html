@@ -186,6 +186,7 @@
 		<div><textarea class="code" mode="python">
 packet = tuntap_read("eth0", timeout=None)
 ethernet = ethernet_decode(packet)
+echo("%s -> %s: %d bytes\n" % (ethernet.src, ethernet.dst, len(packet))
 tuntap_send("eth1", packet)</textarea></div><p/>
 	</div>
 	<div class="slide">
