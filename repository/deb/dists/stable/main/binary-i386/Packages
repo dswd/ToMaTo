@@ -15,36 +15,36 @@ Description: Meta package to install tomato on proxmox hosts
  Meta package to install tomato on proxmox hosts
 
 Package: tomato-hostmanager
-Version: 0.0.32
+Version: 0.0.33
 Architecture: all
 Maintainer: Dennis Schwerdel <schwerdel@informatik.uni-kl.de>
-Installed-Size: 459
+Installed-Size: 467
 Depends: debconf (>= 0.5) | debconf-2.0, python, python-support (>= 0.90.0), python-django (>= 1.2), python-django-south (>= 0.7), python-psycopg2, postgresql, dbconfig-common, daemon, bittorrent, openssl, ssl-cert
 Recommends: pve-qemu-kvm, vzctl, vzdump, bridge-utils, iproute, tinc, ucspi-tcp, rdiff, socat, tcpdump, vncterm, tcpslice, tomato-repy (>= 0.5), vtun, logrotate
 Priority: extra
 Section: misc
-Filename: pool/main/t/tomato-hostmanager/tomato-hostmanager_0.0.32_all.deb
-Size: 82042
-SHA256: 43d3ffcfc9591f7676d58abc32cbe9716444b6dae4ee448aeace6838bf979239
-SHA1: f36f33322d9807317a283f06dcb3e3206a3eafa4
-MD5sum: 581c405bb3b6c286bdd87acec5b2d5f3
+Filename: pool/main/t/tomato-hostmanager/tomato-hostmanager_0.0.33_all.deb
+Size: 84694
+SHA256: 2363aef40303813be3d4f76de2cb1266e60b2b24f22e3baa60fece16e3709942
+SHA1: 4dbe5fa92cf88032dde7195931e90648271a9a25
+MD5sum: ea3c8020628882d75b041739b8e84b3a
 Description: ToMaTo hostmanager
  ToMaTo hostmanager
 
 Package: tomato-repy
-Version: 0.5
+Version: 0.6
 Architecture: all
 Maintainer: Dennis Schwerdel <schwerdel@informatik.uni-kl.de>
-Installed-Size: 858
+Installed-Size: 1131
 Depends: python
 Homepage: http://dswd.github.com/ToMaTo
 Priority: extra
 Section: libs
-Filename: pool/main/t/tomato-repy/tomato-repy_0.5_all.deb
-Size: 215586
-SHA256: 047a012736b5d36530a91262a86e05f19e01c87dd542d15f5c1b36bcaa607438
-SHA1: b0981fe13fb12f682843b772fcecae9ef5d4d98b
-MD5sum: 167eadb1e1bb3dd5958216814a576f0c
+Filename: pool/main/t/tomato-repy/tomato-repy_0.6_all.deb
+Size: 310576
+SHA256: 34aa0787e641bccdbd5514192e99c5e28e71fbaabe38dabff543c142a718faa9
+SHA1: a35fb0740cc927c92ec6468008d7b3f5810ec9ee
+MD5sum: 83ee8df7fd5de3ba4d30f8d051e59ef8
 Description: Python-based virtual machine for networking devices
  Repy allows execution of modified python code in a sandbox.
  ToMaTo-Repy is a modified version of Repy that allows this code
