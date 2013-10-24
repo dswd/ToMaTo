@@ -1,5 +1,5 @@
 Package: tomato-backend
-Version: 3.0.6
+Version: 3.0.7
 Architecture: all
 Maintainer: Dennis Schwerdel <schwerdel@informatik.uni-kl.de>
 Installed-Size: 660
@@ -7,11 +7,11 @@ Depends: debconf (>= 0.5) | debconf-2.0, python, python-django (>= 1.2), python-
 Recommends: tomato-web
 Priority: extra
 Section: misc
-Filename: pool/main/t/tomato-backend/tomato-backend_3.0.6_all.deb
-Size: 95282
-SHA256: 5c17b49e6e48ac09498378fde44dbc60b395edb7ba54b4f33ec95fe6170bfa6a
-SHA1: f6ff607a1209851716b6f2e9453498f2aa551953
-MD5sum: 28fcfb99671c4d88cd868bc35f500e02
+Filename: pool/main/t/tomato-backend/tomato-backend_3.0.7_all.deb
+Size: 95278
+SHA256: 2aa8df7f09c1f0989980ae7a730d934c7371dcc7f08c2295518bb756009ecca1
+SHA1: 6e38b868569038ea52398116abfaa01914701fbc
+MD5sum: 90d1bc00c499a23b40a85b09af3061c4
 Description: ToMaTo backend
  This is the major ToMaTo component. ToMaTo is a networking testbed, giving
  researchers the possibility to design and use virtual networking topologies
@@ -37,7 +37,7 @@ Description: Meta package to install tomato on proxmox hosts
  Meta package to install tomato on proxmox hosts
 
 Package: tomato-hostmanager
-Version: 3.0.6
+Version: 3.0.7
 Architecture: all
 Maintainer: Dennis Schwerdel <schwerdel@informatik.uni-kl.de>
 Installed-Size: 468
@@ -45,11 +45,11 @@ Depends: debconf (>= 0.5) | debconf-2.0, python, python-support (>= 0.90.0), pyt
 Recommends: pve-qemu-kvm, vzctl, vzdump, bridge-utils, iproute, tinc, ucspi-tcp, rdiff, socat, tcpdump, vncterm, tcpslice, tomato-repy (>= 0.5), vtun, logrotate, dosfstools
 Priority: extra
 Section: misc
-Filename: pool/main/t/tomato-hostmanager/tomato-hostmanager_3.0.6_all.deb
-Size: 84950
-SHA256: c21c3ed8a7cca12d920794b03ab5a590c1e7e1b2650bc88efa6414c9eab0dfd8
-SHA1: 63528ad6e77f919f1c66ba385e52eb2f73bbdc3e
-MD5sum: 9e1036d878c85a256147ffbf277aec3a
+Filename: pool/main/t/tomato-hostmanager/tomato-hostmanager_3.0.7_all.deb
+Size: 84970
+SHA256: fd3428bd16869c8d9ef5c3d50e6bbd9f6cb0a9a507079155c159af693585b3aa
+SHA1: 551bca04727be55508a7ead7b1b04cb2120b22ba
+MD5sum: 25fc9f15f4e1a74d8996f46687baac26
 Description: ToMaTo hostmanager
  ToMaTo hostmanager
 
@@ -73,18 +73,18 @@ Description: Python-based virtual machine for networking devices
  to access prepared tun/tap devices.
 
 Package: tomato-web
-Version: 3.0.5
+Version: 3.0.6
 Architecture: all
 Maintainer: Dennis Schwerdel <schwerdel@informatik.uni-kl.de>
 Installed-Size: 2768
 Depends: python, python-django (>= 1.2), python-simplejson, apache2, libapache2-mod-python
 Priority: extra
 Section: misc
-Filename: pool/main/t/tomato-web/tomato-web_3.0.5_all.deb
-Size: 1159820
-SHA256: a2ea445de1a9c9d7f699ea8597287e01db038027cb978effac3889f20cb939a8
-SHA1: ffc2a8e8182944f8be356aa9c7e9f49fad754229
-MD5sum: 2df07d9f4bcd1a32e5b392aedce1bfc6
+Filename: pool/main/t/tomato-web/tomato-web_3.0.6_all.deb
+Size: 1159878
+SHA256: 0249dd27fbdca01cd58a963d71de9fee34d3d57fbc79137c3347c71bd9293557
+SHA1: f35eea997a01c501eca984ca00a2570b9430639f
+MD5sum: 74006c6eed1ae850f65d3f3e7266d468
 Description: ToMaTo webfrontend
  This web-based frontend allows users to access the ToMaTo testbed software.
  The webfrontend is based on HTML, CSS and Javascript and is optimized for
