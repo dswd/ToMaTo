@@ -25,20 +25,19 @@ from .generic import ConnectingElement
 from .generic import ST_CREATED, ST_PREPARED, ST_STARTED
 from ..lib.error import UserError, assert_
 
-class TincVPN(ConnectingElement, Element):
+class VpnCloud(ConnectingElement, Element):
 	name = StringField()
-	mode = StringField(choices=['switch', 'hub'])
 
 	DIRECT_ATTRS = False
 	DIRECT_ATTRS_EXCLUDE = []
 	CAP_PARENT = [None]
 	DEFAULT_ATTRS = {}
 
-	TYPE = "tinc_vpn"
+	TYPE = "vpncloud"
 	HOST_TYPE = None
 	DIRECT_ACTIONS = False
 	DIRECT_ACTIONS_EXCLUDE = []
-	CAP_CHILDREN = {"tinc_endpoint": [ST_CREATED, ST_PREPARED]}
+	CAP_CHILDREN = {"vpncloud_endpoint": [ST_CREATED, ST_PREPARED]}
 	
 	def init(self, *args, **kwargs):
 		self.state = ST_CREATED
@@ -57,103 +56,8 @@ class TincVPN(ConnectingElement, Element):
 			iface.action("destroy", {})
 			self._crossConnect()
 
-	def modify_mode(self, val):
-		self.mode = val
-		for ch in self.children:
-			ch.modify({"mode": self.mode})
-
 	def _crossConnect(self):
-		def _isEndpoint(obj):
-			return not isinstance(obj, list)
-		def _clusterByFilter(nodes, fn):
-			clustered = {}
-			for n in nodes:
-				id_ = fn(n)
-				if not id_ in clustered:
-					clustered[id_] = []
-				clustered[id_].append(n)
-			return clustered.values()
-		def _balance(nodes, max_):
-			if _isEndpoint(nodes):
-				return nodes
-			if len(nodes) == 1:
-				return _balance(nodes[0], max_)
-			if len(nodes) > max_:
-				clusters = []
-				for i in xrange(0, max_):
-					clusters.append([])
-				i = 0
-				while nodes:
-					clusters[i].append(nodes.pop())
-					i = (i+1) % max_
-				nodes = _balance(clusters, max_)
-			nodes = map(lambda n: _balance(n, max_), nodes)
-			if sum(map(lambda n: 1 if _isEndpoint(n) else len(n), nodes)) <= max_:
-				nodes = sum([[n] if _isEndpoint(n) else n for n in nodes], [])
-			return nodes				
-		def _cluster(nodes):
-			clustered = _clusterByFilter(nodes, lambda n: n.element.host.site)
-			clustered = map(lambda cluster: _clusterByFilter(cluster, lambda n: n.element.host), clustered)
-			clustered = _balance(clustered, 5)
-			return clustered
-		def _representative(cluster):
-			if _isEndpoint(cluster):
-				return cluster
-			return _representative(random.choice(cluster))
-		def _connections(clusters):
-			cons = []
-			if _isEndpoint(clusters):
-				return []
-			for c in clusters:
-				cons += _connections(c)
-			for c1 in clusters:
-				for c2 in clusters:
-					if c2 == c1:
-						if _isEndpoint(c1):	break
-						else: continue
-					r1 = _representative(c1)
-					r2 = _representative(c2)
-					cons.append((r1, r2))
-					cons.append((r2, r1))
-			return cons
-		def _check(nodes, connections):
-			assert_(len(cons)/2 <= len(nodes) * len(nodes), "Tinc clustering resulted in too many connections")
-			if not nodes:
-				return
-			connected = set()
-			connected.add(random.choice(nodes).id)
-			changed = True
-			iterations = 0
-			while changed and len(connected) < len(nodes):
-				changed = False
-				for src, dst in cons:
-					if src.id in connected and not dst.id in connected:
-						connected.add(dst.id)
-						changed = True
-				iterations += 1
-			assert_(len(connected) == len(nodes), "Tinc clustering resulted in disconnected nodes")
-			assert_(iterations <= math.ceil(math.log(len(nodes), 5)), "Tinc clustering resulted in too many hops")
-		assert self.state == ST_PREPARED
-		children = self.children
-		peerInfo = {}
-		peers = {}
-		for ch in children:
-			assert ch.element
-			info = ch.info()
-			peerInfo[ch.id] = {
-				"host": ch.element.host.address,
-				"port": info["port"],
-				"pubkey": info["pubkey"],
-			}
-			peers[ch.id] = []
-		clusters = _cluster(children)
-		cons = _connections(clusters)
-		_check(children, cons)
-		for src, dst in cons:
-			peers[src.id].append(peerInfo[dst.id])
-		for ch in children:
-			info = ch.info()
-			ch.modify({"peers": peers[ch.id]})
+		pass
 
 	def _parallelChildActions(self, childList, action, params=None, maxThreads=10):
 		if not params: params = {}
@@ -216,7 +120,6 @@ class TincVPN(ConnectingElement, Element):
 	ATTRIBUTES = Element.ATTRIBUTES.copy()
 	ATTRIBUTES.update({
 		"name": Attribute(field=name, label="Name"),
-		"mode": StatefulAttribute(field=mode, label="Mode", set=modify_mode, writableStates=[ST_CREATED, ST_PREPARED], schema=schema.String(options=['hub', 'switch'], optionsDesc=['Hub', 'Learning switch']))
 	})
 
 	ACTIONS = Element.ACTIONS.copy()
@@ -229,18 +132,17 @@ class TincVPN(ConnectingElement, Element):
 	})
 
 
-class TincEndpoint(ConnectingElement, Element):
+class VpnCloudEndpoint(ConnectingElement, Element):
 	element = ReferenceField(HostElement, reverse_delete_rule=NULLIFY)
 	name = StringField()
-	mode = StringField(choices=['switch', 'hub'])
 
 	DIRECT_ACTIONS_EXCLUDE = ["prepare", "destroy"]
 	DIRECT_ATTRS_EXCLUDE = ["timeout"]
-	CAP_PARENT = [None, TincVPN.TYPE]
+	CAP_PARENT = [None, VpnCloud.TYPE]
 	DEFAULT_ATTRS = {}
 
-	TYPE = "tinc_endpoint"
-	HOST_TYPE = "tinc"
+	TYPE = "vpncloud_endpoint"
+	HOST_TYPE = "vpncloud"
 	CAP_CHILDREN = {}
 	CAP_CONNECTABLE = True
 	
@@ -259,11 +161,6 @@ class TincEndpoint(ConnectingElement, Element):
 	def mainElement(self):
 		return self.element
 	
-	def modify_mode(self, val):
-		self.mode = val
-		if self.element:
-			self.element.modify({"mode": val})
-
 	def onError(self, exc):
 		if self.element:
 			try:
@@ -283,9 +180,6 @@ class TincEndpoint(ConnectingElement, Element):
 		_host = host.select(elementTypes=[self.HOST_TYPE], hostPrefs=hPref, sitePrefs=sPref)
 		UserError.check(_host, code=UserError.NO_RESOURCES, message="No matching host found for element", data={"type": self.TYPE})
 		attrs = self._remoteAttrs
-		attrs.update({
-			"mode": self.mode,
-		})
 		self.element = _host.createElement(self.remoteType, parent=None, attrs=attrs, ownerElement=self)
 		self.save()
 		self.setState(ST_PREPARED, True)
@@ -311,8 +205,7 @@ class TincEndpoint(ConnectingElement, Element):
 
 	ATTRIBUTES = Element.ATTRIBUTES.copy()
 	ATTRIBUTES.update({
-		"name": Attribute(field=name, label="Name"),
-		"mode": StatefulAttribute(field=mode, label="Mode", set=modify_mode, writableStates=[ST_CREATED, ST_PREPARED], schema=schema.String(options=['hub', 'switch'], optionsDesc=['Hub', 'Learning switch'])),
+		"name": Attribute(field=name, label="Name")
 	})
 
 	ACTIONS = Element.ACTIONS.copy()
@@ -325,7 +218,7 @@ class TincEndpoint(ConnectingElement, Element):
 
 
 
-elements.TYPES[TincVPN.TYPE] = TincVPN
-elements.TYPES[TincEndpoint.TYPE] = TincEndpoint
+elements.TYPES[VpnCloud.TYPE] = VpnCloud
+elements.TYPES[VpnCloudEndpoint.TYPE] = VpnCloudEndpoint
 
 from .. import currentUser, setCurrentUser
