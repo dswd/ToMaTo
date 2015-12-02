@@ -84,6 +84,7 @@ class VpnCloud(elements.Element):
 		self.peers = val
 
 	def action_start(self):
+		UserError.check(self.network_id, UserError.INVALID_CONFIGURATION, "Network id must be set")
 		self.pid = vpncloud.start(self._interfaceName(), self.port, self.network_id, self.peers)
 		self.setState(ST_STARTED)
 		net.ifUp(self._interfaceName())
