@@ -15,7 +15,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>
 
-import random, math
+import random
 from ..db import *
 from ..generic import *
 from . import Element
@@ -23,7 +23,7 @@ from .. import elements, host
 from ..host.element import HostElement
 from .generic import ConnectingElement
 from .generic import ST_CREATED, ST_PREPARED, ST_STARTED
-from ..lib.error import UserError, assert_
+from ..lib.error import UserError
 
 class VpnCloud(ConnectingElement, Element):
 	name = StringField()
@@ -45,7 +45,7 @@ class VpnCloud(ConnectingElement, Element):
 		Element.init(self, *args, **kwargs) #no id and no attrs before this line
 		if not self.name:
 			self.name = self.TYPE + self.idStr
-		self.network_id = random.randint(0, 1<<64)
+		self.network_id = random.randint(0, 2**64)
 		self.save()
 	
 	def onChildAdded(self, iface):
