@@ -155,7 +155,7 @@ var Component = Class.extend({
 		this._update(fetch, callback, hide_errors, true);
 	},
 	update: function(fetch, callback, hide_errors) {
-		this._update(fetch, callback, hider_errors, false);
+		this._update(fetch, callback, hide_errors, false);
 	},
 	_update: function(fetch, callback, hide_errors, synchronous) {
 		var t = this;

@@ -30,16 +30,17 @@ def checkSupport():
 	return _check()
 
 @_public
-def start(iface, port, network_id, peers):
+def start(iface, address, port, network_id, peers):
 	iface = params.convert(iface, convert=str, check=lambda iface: not net.ifaceExists(iface))
+	address = params.convert(address, convert=str)
 	port = params.convert(port, convert=int, gte=1, lt=2**16)
-	network_id = params.convert(network_id, convert=int, gte=1, lt=2**32)
+	network_id = params.convert(network_id, convert=int, gte=1, lt=1<<64)
 	peers = params.convert(peers, convert=list)
 	netstat.checkPortFree(port, tcp=False, udp=True, ipv4=True)
 	connect = []
 	for p in peers:
 		connect += ["-c", p]
-	pid = spawnDaemon(["vpncloud", "-d", iface, "-l", "0.0.0.0:%d" % port, "--network-id", "%d" % network_id] + connect)
+	pid = spawnDaemon(["vpncloud", "-d", iface, "-l", "%s:%d" % (address, port), "--network-id", "%d" % network_id] + connect)
 	wait.waitFor(lambda :net.ifaceExists(iface), failCond=lambda :not proc.isAlive(pid))
 	return pid
 

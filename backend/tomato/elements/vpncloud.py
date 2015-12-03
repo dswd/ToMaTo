@@ -27,6 +27,7 @@ from ..lib.error import UserError, assert_
 
 class VpnCloud(ConnectingElement, Element):
 	name = StringField()
+	network_id = IntField()
 
 	DIRECT_ATTRS = False
 	DIRECT_ATTRS_EXCLUDE = []
@@ -44,6 +45,7 @@ class VpnCloud(ConnectingElement, Element):
 		Element.init(self, *args, **kwargs) #no id and no attrs before this line
 		if not self.name:
 			self.name = self.TYPE + self.idStr
+		self.network_id = random.randint(0, 1<<64)
 		self.save()
 	
 	def onChildAdded(self, iface):
@@ -57,7 +59,17 @@ class VpnCloud(ConnectingElement, Element):
 			self._crossConnect()
 
 	def _crossConnect(self):
-		pass
+		common_peers = []
+		for ch in self.children[:3]:
+			assert isinstance(ch, VpnCloudEndpoint)
+			assert ch.element
+			addr = "%s:%d" % (ch.element.host.address, ch.element.getAttrs()['port'])
+			common_peers.append(addr)
+		for ch in self.children:
+			assert isinstance(ch, VpnCloudEndpoint)
+			assert ch.element
+			addr = "%s:%d" % (ch.element.host.address, ch.element.getAttrs()['port'])
+			ch.modify({"peers": filter(lambda p: p!=addr, common_peers)})
 
 	def _parallelChildActions(self, childList, action, params=None, maxThreads=10):
 		if not params: params = {}
@@ -133,11 +145,15 @@ class VpnCloud(ConnectingElement, Element):
 
 
 class VpnCloudEndpoint(ConnectingElement, Element):
+	"""
+	:type element: HostElement
+	"""
+
 	element = ReferenceField(HostElement, reverse_delete_rule=NULLIFY)
 	name = StringField()
 
 	DIRECT_ACTIONS_EXCLUDE = ["prepare", "destroy"]
-	DIRECT_ATTRS_EXCLUDE = ["timeout"]
+	DIRECT_ATTRS_EXCLUDE = ["timeout", "network_id"]
 	CAP_PARENT = [None, VpnCloud.TYPE]
 	DEFAULT_ATTRS = {}
 
@@ -151,8 +167,6 @@ class VpnCloudEndpoint(ConnectingElement, Element):
 	def init(self, *args, **kwargs):
 		self.state = ST_CREATED
 		Element.init(self, *args, **kwargs) #no id and no attrs before this line
-		if self.parent:
-			self.mode = self.parent.mode
 		if not self.name:
 			self.name = self.parent._nextName("port")
 		self.save()
@@ -168,6 +182,8 @@ class VpnCloudEndpoint(ConnectingElement, Element):
 			except UserError, err:
 				if err.code == UserError.ENTITY_DOES_NOT_EXIST:
 					self.element.state = ST_CREATED
+				else:
+					raise
 			self.setState(self.element.state, True)
 			if self.state == ST_CREATED:
 				if self.element:
@@ -180,6 +196,7 @@ class VpnCloudEndpoint(ConnectingElement, Element):
 		_host = host.select(elementTypes=[self.HOST_TYPE], hostPrefs=hPref, sitePrefs=sPref)
 		UserError.check(_host, code=UserError.NO_RESOURCES, message="No matching host found for element", data={"type": self.TYPE})
 		attrs = self._remoteAttrs
+		attrs.update(network_id=self.parent.network_id)
 		self.element = _host.createElement(self.remoteType, parent=None, attrs=attrs, ownerElement=self)
 		self.save()
 		self.setState(ST_PREPARED, True)
